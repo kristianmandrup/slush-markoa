@@ -1,0 +1,35 @@
+{
+    "name": "<%= appNameSlug %>",
+    "description": "<%= appName %>",
+    "version": "0.0.1",
+    "homepage": "https://github.com/<%= authorName %>/<%= appNameSlug %>",
+    "author": {
+        "name": "Kristian Mandrup",
+        "email": "kmandrup@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/<%= authorName %>/<%= appNameSlug %>.git"
+    },
+    "bugs": {
+        "url": "https://github.com/<%= authorName %>/<%= appNameSlug %>/issues"
+    },
+    "licenses": [{
+        "type": "MIT",
+    }],
+    "main": "index.js",
+    "engines": {
+        "node": ">= 0.11.0",
+        "npm": ">=1.4.3"
+    },
+    "scripts": {
+        "test": "echo \"No tests\""
+    },
+    "dependencies": {
+        "gulp": "^3.6.2",
+        "markoa": "kristianmandrup/markoa",
+    },
+    "keywords": [
+        "markoa"
+    ]
+}
