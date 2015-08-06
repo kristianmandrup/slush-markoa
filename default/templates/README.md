@@ -1,10 +1,10 @@
-<%= appName %> [![Build Status](https://secure.travis-ci.org/<%= authorName %>/<%= appNameSlug %>.png?branch=master)](https://travis-ci.org/<%= authorName %>/<%= appNameSlug %) [![NPM version](https://badge-me.herokuapp.com/api/npm/<%= appNameSlug %>.png)](http://badges.enytc.com/for/npm/<%= appNameSlug %)
-===================================================================================================================================================================================================================================================================================================================
+<%= appName %>
+==============
 
-> Markoa app generator
+<%= appDescription %>
 
-Getting Started
----------------
+Install
+-------
 
 Install `<%= appNameSlug %>` in a project where you want to mount the app:
 
@@ -13,6 +13,14 @@ $ npm install <%= appNameSlug %> --save
 ```
 
 ### Usage
+
+Ideally you should be able to mount the app like this:
+
+```js
+let myApp = require('<%= appNameSlug %>');
+let apps = ['index'];
+myApp.mountIn(myAppContainer, apps);
+```
 
 ### App file structure
 
@@ -54,12 +62,12 @@ appConfigurator.mountApps('projects', 'teams']);
 Contributing
 ------------
 
-See the [CONTRIBUTING Guidelines](https://github.com/<%= authorName %>/<%= appNameSlug %>/blob/master/CONTRIBUTING.md)
+See the [CONTRIBUTING Guidelines](https://github.com/<%= userName %>/<%= appNameSlug %>/blob/master/CONTRIBUTING.md)
 
 Support
 -------
 
-If you have any problem or suggestion please open an issue [here](https://github.com/<%= authorName %>/<%= appNameSlug %>/issues).
+If you have any problem or suggestion please open an issue [here](https://github.com/<%= userName %>/<%= appNameSlug %>/issues).
 
 License
 -------
