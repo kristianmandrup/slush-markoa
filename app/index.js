@@ -1,4 +1,13 @@
-module.exports = function(templatesRoot) {
+var gulp = require('gulp'),
+    install = require('gulp-install'),
+    conflict = require('gulp-conflict'),
+    template = require('gulp-template'),
+    rename = require('gulp-rename'),
+    _ = require('underscore.string'),
+    inquirer = require('inquirer'),
+    path = require('path');
+
+module.exports = function(defaults) {
   return function (done) {
       var prompts = [{
           name: 'appName',

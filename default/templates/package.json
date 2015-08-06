@@ -2,17 +2,17 @@
     "name": "<%= appNameSlug %>",
     "description": "<%= appName %>",
     "version": "0.0.1",
-    "homepage": "https://github.com/<%= authorName %>/<%= appNameSlug %>",
+    "homepage": "https://github.com/<%= userName %>/<%= appNameSlug %>",
     "author": {
         "name": "Kristian Mandrup",
         "email": "kmandrup@gmail.com"
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/<%= authorName %>/<%= appNameSlug %>.git"
+        "url": "git://github.com/<%= userName %>/<%= appNameSlug %>.git"
     },
     "bugs": {
-        "url": "https://github.com/<%= authorName %>/<%= appNameSlug %>/issues"
+        "url": "https://github.com/<%= userName %>/<%= appNameSlug %>/issues"
     },
     "licenses": [{
         "type": "MIT",
