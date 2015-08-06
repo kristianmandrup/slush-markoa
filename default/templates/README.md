@@ -51,14 +51,6 @@ myApp.mountIn(myAppContainer, apps);
   marko-taglib.json  
 ```
 
-### Registering the apps
-
-```js
-let markoa = ('markoa');
-let appConfigurator = new markoa.appContainer.configurator(__dirname);
-appConfigurator.mountApps('projects', 'teams']);
-```
-
 Contributing
 ------------
 
