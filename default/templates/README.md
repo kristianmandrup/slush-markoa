@@ -14,7 +14,42 @@ $ npm install <%= appNameSlug %> --save
 
 ### Usage
 
-TODO
+### App file structure
+
+```sh
+/apps
+  /_global
+    /components
+    /state
+      index.js
+    /layouts
+      _default_page.jade
+  /index
+    /components
+      /project-feed
+        template.marko
+    /layouts
+      _page.jade
+    /state
+      index.js
+    /page
+      index.jade
+      index.marko
+      index.browser.json
+    marko-taglib.json
+  /repositories
+  /teams
+  ...
+  marko-taglib.json  
+```
+
+### Registering the apps
+
+```js
+let markoa = ('markoa');
+let appConfigurator = new markoa.appContainer.configurator(__dirname);
+appConfigurator.mountApps('projects', 'teams']);
+```
 
 Contributing
 ------------
