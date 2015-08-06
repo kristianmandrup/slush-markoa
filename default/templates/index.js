@@ -1,7 +1,6 @@
+// TODO: improve!
 let markoa = require('./markoa');
-let appContainer = markoa.appContainer;
-
-let myAppConfigurator = new appContainer.configurator(__dirname);
-// myAppConfigurator.pageData = myPageDataFn;
-let myApps = ['index'];
-myAppConfigurator.mountApps(myApps);
+let appConfigurator = new markoa.appContainer.configurator(__dirname);
+let mounter = require('./mounter')(appConfigurator);
+// let apps = ['index'];
+// mounter.mount(apps);
