@@ -5,7 +5,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     _ = require('underscore.string'),
     inquirer = require('inquirer'),
-    path = require('path');
+    path = require('path'),
+    chalk = require('chalk-log');
 
 function isEmpty(str) {
     return (!str || str.length === 0);
@@ -14,8 +15,11 @@ function isEmpty(str) {
 module.exports = function() {
     return function (done) {
         var prompts = [{
+            name: 'tagName',
+            message: 'What is the name of your tag?',
+        }, {
             name: 'appName',
-            message: 'What is the name of your project?',
+            message: 'For which app (empty: global)?'
         }, {
             type: 'confirm',
             name: 'moveon',
@@ -24,11 +28,21 @@ module.exports = function() {
         //Ask
         inquirer.prompt(prompts,
             function (answers) {
+                console.log('answers', answers);
                 if (!answers.moveon) {
                     return done();
                 }
-                if (isEmpty(answers.appNameSlug)) done();
-                answers.appNameSlug = _.slugify(answers.appName);
+                if (isEmpty(answers.tagName)) done();
+
+                answers.tagNameSlug = _.slugify(answers.tagName);
+                if (!answers.tagNameSlug.match(/-/)) {
+                  chalk.error('Tag name must be of the form  xx-yyy, was:' + answers.tagNameSlug);
+                  return done();
+                }
+
+                answers.tagNamePretty = _.humanize(answers.tagName);
+                var target = answers.appName ? path.join('./apps', answers.appName) : './apps/_global';
+                var dest = path.join(target, 'components', answers.tagNameSlug);
                 gulp.src(__dirname + '/templates/**')
                     .pipe(template(answers))
                     .pipe(rename(function (file) {
@@ -37,7 +51,7 @@ module.exports = function() {
                         }
                     }))
                     .pipe(conflict('./'))
-                    .pipe(gulp.dest('./apps/' + answers.appNameSlug))
+                    .pipe(gulp.dest(dest))
                     .pipe(install())
                     .on('end', function () {
                         done();
