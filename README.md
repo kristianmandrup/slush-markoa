@@ -106,6 +106,20 @@ If an app name is given, the tag is registered for that app
         template.marko
 ```
 
+#### Single tag example
+
+-	What is the name of your tag or tags (, separated) ? `top-menu`
+-	For which app (empty: global) ?
+
+Creates the global tag `top-menu` under `apps/_global`
+
+#### Multiple tags
+
+-	What is the name of your tag or tags (, separated) ? `top-menu, side-bar, session-bar`
+-	For which app (empty: global) ? `index`
+
+Creates the tags: `top-menu`, `side-bar` and `session-bar` for the app `apps/index`
+
 ### Registering the apps
 
 Follow a recipe like the following...
