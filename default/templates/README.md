@@ -22,6 +22,14 @@ let apps = ['index'];
 myApp.mountIn(myAppContainer, apps);
 ```
 
+You can also use the `mounter.js` directly:
+
+```js
+let apps = ['index', 'projects'];
+let mount = require('./mounter')(appContainer)
+mount(apps);
+```
+
 ### App file structure
 
 ```sh

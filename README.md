@@ -3,6 +3,14 @@ Slush Markoa [![Build Status](https://secure.travis-ci.org/kristianmandrup/slush
 
 > Markoa app generator
 
+Generators included
+-------------------
+
+-	`slush markoa` (basic project with markoa apps)
+-	`slush markoa:app` (add app to apps)
+-	`slush markoa:roots` (roots.cx configuration)
+-	`slush markoa:tag` (add one or more marko tags)
+
 Getting Started
 ---------------
 

@@ -16,8 +16,37 @@ module.exports = function(defaults) {
                 if (!answers.moveon) {
                     return done();
                 }
-                if (_.isBlank(answers.appNameSlug)) done();
-                answers.appNameSlug = _.slugify(answers.appName);
+
+                // run `npm install --save` and `npm install --save-dev`
+
+                // dev dependencies
+                // "nib": "^1.1.0",
+                // "rupture": "^0.6.1",
+                // "jeet": "^6.1.2",
+                // "jade-markoa": "^0.1.0",
+                // "autoprefixer-stylus": "^0.7.1",
+                // "axis": "^0.4.2",
+                // "fluidity": "^0.2.3",
+                // "client-templates": "^0.2.0",
+
+                // dependencies
+                // "roots": "^3.2.2",
+                // TODO: some of the packs below are auto included by ROOTS!!!
+
+                // "semantic-ui": "^2.0.7",
+                // "stylus": "0.51.x",
+                // "sugar": "^1.4.1",
+                // "coffee-script": "1.9.x",
+                // "css-pipeline": "0.2.x",
+                // "font-awesome": "^4.4.0",
+                // "gulp": "^3.9.0",
+                // "gulp-autoprefixer": "^2.3.1",
+                // "js-pipeline": "0.2.x",
+                // "jstransformer-marked": "0.0.x",
+                // "jade": "^1.11.0",
+                // "jquery": "^2.1.4",
+
+
                 gulp.src(__dirname + '/templates/**')
                     .pipe(template(answers))
                     .pipe(rename(function (file) {
