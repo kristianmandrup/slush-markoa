@@ -1,25 +1,18 @@
-var gulp = require('gulp'),
-    install = require('gulp-install'),
-    conflict = require('gulp-conflict'),
-    template = require('gulp-template'),
-    rename = require('gulp-rename'),
-    _ = require('underscore.string'),
-    inquirer = require('inquirer'),
-    path = require('path'),
-    chalk = require('chalk-log');
+'use strict';
 
-function isEmpty(str) {
-    return (!str || str.length === 0);
-}
+var _         = require('underscore.string'),
+    inquirer  = require('inquirer'),
+    path      = require('path'),
+    chalk     = require('chalk-log');
 
 module.exports = function() {
     return function (done) {
         var prompts = [{
             name: 'tagName',
-            message: 'What is the name of your tag?',
+            message: 'What is the name of your tag or tags (, separated) ?',
         }, {
             name: 'appName',
-            message: 'For which app (empty: global)?'
+            message: 'For which app (empty: global) ?'
         }, {
             type: 'confirm',
             name: 'moveon',
@@ -28,34 +21,29 @@ module.exports = function() {
         //Ask
         inquirer.prompt(prompts,
             function (answers) {
-                console.log('answers', answers);
                 if (!answers.moveon) {
                     return done();
                 }
-                if (isEmpty(answers.tagName)) done();
-
-                answers.tagNameSlug = _.slugify(answers.tagName);
-                if (!answers.tagNameSlug.match(/-/)) {
-                  chalk.error('Tag name must be of the form  xx-yyy, was:' + answers.tagNameSlug);
-                  return done();
+                if (_.isBlank(answers.tagName)) {
+                  chalk.error('Tag name can NOT be empty');
+                  done();
                 }
+                answers.appName = _.clean(answers.appName);
+                var targetDir = _.isBlank(answers.appName) ? './apps/_global' : path.join('./apps', answers.appName);
 
-                answers.tagNamePretty = _.humanize(answers.tagName);
-                var target = answers.appName ? path.join('./apps', answers.appName) : './apps/_global';
-                var dest = path.join(target, 'components', answers.tagNameSlug);
-                gulp.src(__dirname + '/templates/**')
-                    .pipe(template(answers))
-                    .pipe(rename(function (file) {
-                        if (file.basename[0] === '_') {
-                            file.basename = '.' + file.basename.slice(1);
-                        }
-                    }))
-                    .pipe(conflict('./'))
-                    .pipe(gulp.dest(dest))
-                    .pipe(install())
-                    .on('end', function () {
-                        done();
-                    });
+                var createTag = require('./create-tag');
+
+                if (answers.tagName.match(/,/)) {
+                  var tags = answers.tagName.split(',').map(function(tag) {
+                      return _.clean(tag);
+                  })
+                  for (let tag of tags) {
+                    var answers = {tagName: tag, appName: answers.appName}
+                    createTag(answers, targetDir);
+                  }
+                } else {
+                  createTag(answers, targetDir);
+                }
             }
         );
     }
