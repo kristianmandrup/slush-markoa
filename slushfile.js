@@ -47,9 +47,7 @@ var defaults = (function () {
 let tasks = {};
 tasks.default = require('./default')(defaults);
 
-for (let name of ['app', 'tag'])
+for (let name of ['app', 'tag', 'roots']) {
   tasks[name] = require('./' + name)();
-
-gulp.task('default', tasks.default);
-gulp.task('app', tasks.app);
-gulp.task('tag', tasks.tag);
+  gulp.task(name, tasks[name]);
+}
