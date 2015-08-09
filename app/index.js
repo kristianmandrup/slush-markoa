@@ -1,3 +1,12 @@
+/*
+ * slush-markoa
+ * https://github.com/kristianmandrup/slush-markoa
+ *
+ * Copyright (c) 2015, Kristian Mandrup
+ * Licensed under the MIT license.
+ */
+
+'use strict';
 var gulp = require('gulp'),
     install = require('gulp-install'),
     conflict = require('gulp-conflict'),
@@ -5,10 +14,18 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     _ = require('underscore.string'),
     inquirer = require('inquirer'),
-    path = require('path');
+    path = require('path'),
+    fs = require('fs-extra');
 
-function isEmpty(str) {
-    return (!str || str.length === 0);
+// move
+function moveFile(src, dest) {
+  console.log('MOVE', src, dest);
+  fs.copySync(src, dest, function (err) {
+    if (err) return console.error(err)
+    fs.remove(src, function (err) {
+      if (err) return console.error(err)
+    });
+  });
 }
 
 module.exports = function() {
@@ -27,20 +44,21 @@ module.exports = function() {
                 if (!answers.moveon) {
                     return done();
                 }
-                if (isEmpty(answers.appNameSlug)) done();
+                if (_.isBlank(answers.appNameSlug)) done();
                 answers.appNameSlug = _.slugify(answers.appName);
+
                 gulp.src(__dirname + '/templates/**')
                     .pipe(template(answers))
                     .pipe(rename(function (file) {
-                        if (file.basename[0] === '_') {
-                            file.basename = '.' + file.basename.slice(1);
+                        if (file.basename.match(/^app/)) {
+                            file.basename = file.basename.replace(/^app/, answers.appName);
                         }
                     }))
                     .pipe(conflict('./'))
                     .pipe(gulp.dest('./apps/' + answers.appNameSlug))
                     .pipe(install())
                     .on('end', function () {
-                        done();
+                      done()
                     });
             }
         );

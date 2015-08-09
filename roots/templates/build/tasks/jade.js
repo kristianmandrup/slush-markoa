@@ -1,17 +1,19 @@
+var gulp = require('gulp');
+var watch = require('gulp-watch');
 var jadeMarko = require('jade-markoa');
 
+// custom jade compilation to Marko
 gulp.task('jade:marko', function() {
-  // custom jade compilation to .marko
   gulp.src(['apps/**/*.jade'])
-      // filename: 'base',
-      .pipe(jadeMarko({basedir: 'apps'}))
-      .pipe(gulp.dest('./apps'))
+    .pipe(jadeMarko({basedir: 'apps'}))
+    .pipe(gulp.dest('./apps'))
 });
 
+
+// watch jade files, compile to marko
 gulp.task('jade:watch', function() {
-  // custom jade compilation to .marko
-  gulp.watch(['apps/**/*.jade'])
-      // filename: 'base',
-      .pipe(jadeMarko({basedir: 'apps'}))
-      .pipe(gulp.dest('./apps'))
+  gulp.src(['apps/**/*.jade'])
+    .pipe(watch('css/**/*.css'))
+    .pipe(jadeMarko({basedir: 'apps'}))
+    .pipe(gulp.dest('./apps'))
 });

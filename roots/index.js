@@ -1,11 +1,14 @@
+'use strict';
 var gulp = require('gulp'),
     install = require('gulp-install'),
     conflict = require('gulp-conflict'),
     template = require('gulp-template'),
+    notify = require('gulp-notify'),
     rename = require('gulp-rename'),
     _ = require('underscore.string'),
     inquirer = require('inquirer'),
-    path = require('path');
+    path = require('path'),
+    chalk     = require('chalk-log');
 
 module.exports = function(defaults) {
     return function (done) {
@@ -16,36 +19,16 @@ module.exports = function(defaults) {
                 if (!answers.moveon) {
                     return done();
                 }
+                var installs = {
+                  globally: 'npm install roots -g',
+                  dev: 'npm install nib rupture jeet jade-markoa gulp-autoprefixer autoprefixer-stylus axis fluidity client-templates jade through2 stylus --save-dev',
+                  default: 'npm install roots semantic-ui sugar'
+                };
 
-                // run `npm install --save` and `npm install --save-dev`
-
-                // dev dependencies
-                // "nib": "^1.1.0",
-                // "rupture": "^0.6.1",
-                // "jeet": "^6.1.2",
-                // "jade-markoa": "^0.1.0",
-                // "autoprefixer-stylus": "^0.7.1",
-                // "axis": "^0.4.2",
-                // "fluidity": "^0.2.3",
-                // "client-templates": "^0.2.0",
-
-                // dependencies
-                // "roots": "^3.2.2",
-                // TODO: some of the packs below are auto included by ROOTS!!!
-
-                // "semantic-ui": "^2.0.7",
-                // "stylus": "0.51.x",
-                // "sugar": "^1.4.1",
-                // "coffee-script": "1.9.x",
-                // "css-pipeline": "0.2.x",
-                // "font-awesome": "^4.4.0",
-                // "gulp": "^3.9.0",
-                // "gulp-autoprefixer": "^2.3.1",
-                // "js-pipeline": "0.2.x",
-                // "jstransformer-marked": "0.0.x",
-                // "jade": "^1.11.0",
-                // "jquery": "^2.1.4",
-
+                chalk.ok('Please install:');
+                chalk.log(installs.globally);
+                chalk.log(installs.default);
+                chalk.log(installs.dev);
 
                 gulp.src(__dirname + '/templates/**')
                     .pipe(template(answers))
