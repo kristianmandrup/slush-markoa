@@ -67,11 +67,47 @@ App container generated
   ...
   marko-taglib.json  
 
+  // Gulp build tasks
   /build
     /tasks
+      jade.js
+      stylus.js
+      watch.js
+    paths.js
+    ...
 ```
 
-By convention, layout files are post fixed with `-layout`. The default layout for any app should be in the `/page` folder and simply be called `layout.jade`.
+### Development
+
+Watching files:
+
+`gulp watch` - watches `.jade` files in `/apps` and `.styl` files in `/styles`
+
+### Distribution
+
+Static assets are compiled to `/dist` and can be referenced from marko directly.
+
+So this is valid:
+
+```html
+<link rel="stylesheet" type="text/css" href="app.css">
+<link rel="stylesheet" type="text/css" href="semantic.min.css">
+<script src="semantic.min.js"></script>
+```
+
+Or the same in a `.jade` file
+
+```jade
+link(rel="stylesheet" type="text/css" href="app.css")
+link(rel="stylesheet" type="text/css" href="semantic.min.css")
+script(src="semantic.min.js")
+```
+
+### Layout
+
+First run `slush markoa:layout` to generate setup for Jade, Stylus and Semantic UI - to power the layout of your app.
+
+Install Semantic UI as instructed: `npm install semantic-ui --save`
 
 ### Generating apps
 

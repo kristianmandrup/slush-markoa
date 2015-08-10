@@ -47,8 +47,8 @@ module.exports = function(defaults) {
                 installCommand.on('exit', function (exitCode) {
                   if (exitCode !== 0) done();
 
-                  chalk.ok('Semantic UI');
-                  chalk.log('npm install semantic-ui');
+                  chalk.ok('Install: Semantic UI');
+                  chalk.log('npm install semantic-ui --save');
 
                   gulp.src(__dirname + '/templates/**')
                       .pipe(template(answers))

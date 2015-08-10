@@ -8,8 +8,10 @@ let staticDirs = []
 for (let dir of ['dist'])
   staticDirs.push(path.join(__dirname, dir));
 
+let staticConf = {dirs: staticDirs};
+
 // configure explicitly to use /dist static asset folder
-let serverOpts = {port: 4005, lassoFile: lassoFile, staticDirs: staticDirs};
+let serverOpts = {port: 4005, lassoFile: lassoFile, static: staticConf };
 let Server = markoa.Server;
 
 let koaApp = new Server(serverOpts).init(function(mws) {
