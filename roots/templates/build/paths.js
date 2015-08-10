@@ -14,6 +14,7 @@ module.exports = {
   html: path.join(root.app, '**/*.html'),
   style: path.join(root.styles, 'css/**/*.css'),
   stylus: path.join(root.styles, 'stylus/**/*.styl'),
+  jade: path.join(root.app, '**/*.jade');
   styleDest: path.join(root.output, 'styles/css'),
   output: root.output,
   sourceMapRelativePath: '../' + root.app,
