@@ -1,12 +1,12 @@
 var gulp = require('gulp');
 var paths = require('../paths');
 var watch = require('gulp-watch');
-var jadeMarko = require('jade-markoa');
+var jadeMarko = require('jade-marko');
 
 // custom jade compilation to Marko
 gulp.task('jade:marko', function() {
   gulp.src(paths.jade)
-    .pipe(jadeMarko({basedir: 'apps'}))
+    .pipe(jadeMarko())
     .pipe(gulp.dest('./apps'))
 });
 

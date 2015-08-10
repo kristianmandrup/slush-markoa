@@ -21,8 +21,8 @@ module.exports = function(defaults) {
                 }
                 var installs = {
                   globally: 'npm install roots -g',
-                  dev: 'npm install nib rupture jeet jade-marko gulp-autoprefixer autoprefixer-stylus axis fluidity client-templates jade stylus --save-dev',
-                  default: 'npm install roots semantic-ui sugar'
+                  dev: 'npm install client-templates--save-dev',
+                  default: 'npm install roots'
                 };
 
                 chalk.ok('Please install:');

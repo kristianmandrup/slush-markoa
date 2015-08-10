@@ -13,7 +13,7 @@ module.exports =
 
   extensions: [
     js_pipeline(files: paths.source),
-    css_pipeline(files: paths.stylus)
+    css_pipeline(files: paths.styles)
 
     # all jade templates placed in this folder will be precompiled into public/js/templates.js
     # and can be used from inside the client browser via template[filename]

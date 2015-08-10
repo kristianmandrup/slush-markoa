@@ -8,6 +8,7 @@ Generators included
 
 -	`slush markoa` (basic project with markoa apps)
 -	`slush markoa:app` (add app to apps)
+-	`slush markoa:layout` (Stylus and Jade->Marko configuration)
 -	`slush markoa:roots` (roots.cx configuration)
 -	`slush markoa:tag` (add one or more marko tags)
 
@@ -46,25 +47,31 @@ App container generated
     /state
       index.js
     /layouts
-      _default_page.jade
+      web-layout.jade
   /index
     /components
       /project-feed
         template.marko
     /layouts
-      _page.jade
-    /state
-      index.js
+      mobile-layout.jade
     /page
+      layout.jade
       index.jade
       index.marko
       index.browser.json
+    /state
+      index.js
     marko-taglib.json
   /repositories
   /teams
   ...
   marko-taglib.json  
+
+  /build
+    /tasks
 ```
+
+By convention, layout files are post fixed with `-layout`. The default layout for any app should be in the `/page` folder and simply be called `layout.jade`.
 
 ### Generating apps
 

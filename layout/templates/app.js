@@ -3,7 +3,13 @@ let markoa = require('markoa');
 let path = require('path');
 
 let lassoFile = path.join(__dirname, './lasso-config.json');
-let serverOpts = {port: 4005, lassoFile: lassoFile};
+
+let staticDirs = []
+for (let dir of ['dist'])
+  staticDirs.push(path.join(__dirname, dir));
+
+// configure explicitly to use /dist static asset folder
+let serverOpts = {port: 4005, lassoFile: lassoFile, staticDirs: staticDirs};
 let Server = markoa.Server;
 
 let koaApp = new Server(serverOpts).init(function(mws) {
@@ -13,9 +19,9 @@ let koaApp = new Server(serverOpts).init(function(mws) {
 let AppContainer = markoa.AppContainer;
 let myAppContainer = new AppContainer(); //.start();
 
-let appConfigurator = new markoa.AppConfigurator(myAppContainer, {rootPath: __dirname});
+let mounter = new markoa.AppMounter(__dirname);
 
 let apps = ['project', 'repository'];
 // mounting multiple apps on appContainer instance
-appConfigurator.mountApps(apps);
-myAppContainer.createRoutes(koaApp).start();
+mounter.mountApps(apps);
+mounter.appContainer.createRoutes(koaApp).start();
