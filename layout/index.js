@@ -29,7 +29,7 @@ module.exports = function(defaults) {
                   return pluginMap[name] || name;
                 })
 
-                let modules = ['jade-marko', 'sugar', 'gulp-watch', 'gulp-sourcemaps', 'require-dir'];
+                let modules = ['jade-marko', 'jade', 'stylus', 'sugar', 'gulp-watch', 'gulp-sourcemaps', 'require-dir'];
                 for (let name of stylusModules)
                   modules.push(name);
                 let npmModules = modules.join(' ');

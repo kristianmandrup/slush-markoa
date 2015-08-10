@@ -27,7 +27,7 @@
         "markoa": "kristianmandrup/markoa"
     },
     "devDependencies": {
-      "gulp": "^3.6.2",
+      "gulp": "^3.6.2"
     },
     "keywords": [
         "markoa"
