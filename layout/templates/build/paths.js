@@ -13,7 +13,7 @@ module.exports = {
   source: path.join(root.app, '**/*.js'),
   css: path.join(root.styles, 'css/**/*.css'),
   stylus: path.join(root.styles, '**/*.styl'),
-  jade: path.join(root.apps, '**/*.jade');
+  jade: path.join(root.apps, '**/*.jade'),
   styles: root.styles,
   stylesDist: path.join(root.output, 'css'),
   output: root.output,
