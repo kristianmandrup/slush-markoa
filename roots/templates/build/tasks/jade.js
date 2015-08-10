@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var paths = require('../paths');
 var watch = require('gulp-watch');
 var jadeMarko = require('jade-markoa');
 
@@ -9,13 +10,6 @@ gulp.task('jade:marko', function() {
     .pipe(gulp.dest('./apps'))
 });
 
-gulp.task('stylus:watch', function () {
-  gulp.watch(paths.stylus, ['stylus']);
-
-// watch jade files, compile to marko
-gulp.task('jade:watch', function() {
-  gulp.src(paths.jade])
-    .pipe(watch(paths.jade))
-    .pipe(jadeMarko({basedir: 'apps'}))
-    .pipe(gulp.dest('./apps'))
+gulp.task('jade:watch', function () {
+  gulp.watch(paths.jade, ['jade:marko']);
 });

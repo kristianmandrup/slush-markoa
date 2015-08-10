@@ -21,7 +21,7 @@ module.exports = function(defaults) {
                 }
                 var installs = {
                   globally: 'npm install roots -g',
-                  dev: 'npm install nib rupture jeet jade-markoa gulp-autoprefixer autoprefixer-stylus axis fluidity client-templates jade through2 stylus --save-dev',
+                  dev: 'npm install nib rupture jeet jade-marko gulp-autoprefixer autoprefixer-stylus axis fluidity client-templates jade stylus --save-dev',
                   default: 'npm install roots semantic-ui sugar'
                 };
 
