@@ -24,7 +24,8 @@
         "test": "echo \"No tests\""
     },
     "dependencies": {
-        "markoa": "kristianmandrup/markoa"
+        "markoa": "kristianmandrup/markoa",
+        "browser-refresh-taglib": "^1.0.3"
     },
     "devDependencies": {
       "gulp": "^3.6.2"

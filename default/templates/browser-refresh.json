@@ -1,0 +1,4 @@
+{
+  "sslCert": "server.crt",
+  "sslKey": "server.key"
+}

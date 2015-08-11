@@ -83,6 +83,19 @@ Watching files:
 
 `gulp watch` - watches `.jade` files in `/apps` and `.styl` files in `/styles`
 
+The Markoa server is by default configured to watch .marko files in the /apps folders registered and will reload in order to recompile to `.js` template files.
+
+You can enable [browser refresh](https://github.com/patrick-steele-idem/browser-refresh)
+
+```sh
+npm install browser-refresh --global
+browser-refresh server.js
+```
+
+Which should auto reload the browser whenever a `.marko` page is changes, for instant feedback!
+
+There is also a `browser-refresh.json` file for configuring this in more details, including for SSL support.
+
 ### Distribution
 
 Static assets are compiled to `/dist` and can be referenced from marko directly.
