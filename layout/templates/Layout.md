@@ -15,6 +15,6 @@ Run `gulp watch` to watch `styl` and `jade` files for changes and auto-compile o
 
 Use [Html2Jade](http://html2jade.aaron-powell.com/) to convert existing HTML to Jade templates.
 
-Or via CLI: [html2jade](https://github.com/donpark/html2jade)
+CLI: [html2jade](https://github.com/donpark/html2jade)
 
-TODO: Convert to Gulp transform (plugin)
+Gulp: [gulp-html2jade](https://www.npmjs.com/package/gulp-html2jade)

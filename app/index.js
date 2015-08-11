@@ -32,7 +32,7 @@ module.exports = function() {
     return function (done) {
         var prompts = [{
             name: 'appName',
-            message: 'What is the name of your project?',
+            message: 'What is the name of your app?',
         }, {
             type: 'confirm',
             name: 'moveon',
