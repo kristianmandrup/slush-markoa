@@ -109,6 +109,9 @@ If no app name is given, the tag becomes global
     /components
       /[tag]
         template.marko
+        template.jade
+        marko-tag.json
+  marko-taglib.json
 ```
 
 If an app name is given, the tag is registered for that app
@@ -127,6 +130,89 @@ If an app name is given, the tag is registered for that app
 -	For which app (empty: global) ?
 
 Creates the global tag `top-menu` under `apps/_global`
+
+```sh
+- template.jade
+- template.marko
+- renderer.js
+- marko-tag.json
+```
+
+Example `ui-tabs`
+
+Example: `ui-tabs/marko-tag.json`
+
+```json
+{
+    "@orientation": "string",
+    "@tabs <tab>[]": {
+        "@title": "string"
+    }
+}
+```
+
+`renderer.js` references `template.marko` (see below)
+
+```js
+var template = require('./template.marko');
+
+exports.renderer = function(input, out) {
+    var tabs = input.tabs;
+
+    // Tabs will be in the following form:
+    // [
+    //     {
+    //         title: 'Home',
+    //         renderBody: function(out) { ... }
+    //     },
+    //     {
+    //         title: 'Profile',
+    //         renderBody: function(out) { ... }
+    //     },
+    //     {
+    //         title: 'Messages',
+    //         renderBody: function(out) { ... }
+    //     }
+    // ]
+    console.log(tabs.length); // Output: 3
+
+    template.render({
+        tabs: tabs
+    }, out);
+
+};
+```
+
+`ui-tabs/template.marko`
+
+```html
+<div class="tabs">
+    <ul class="nav nav-tabs">
+        <li class="tab" for="tab in data.tabs">
+            <a href="#${tab.title}">
+                ${tab.title}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" for="tab in data.tabs">
+            <invoke function="tab.renderBody(out)"/>
+        </div>
+    </div>
+</div>
+```
+
+### Marko taglibs
+
+Each app has its own taglib file. This file can reference multiple folders if needed.
+
+`marko-taglib.json` example:
+
+```json
+{
+    "tags-dir": ["./components", "./modules"]
+}
+```
 
 #### Multiple tags
 

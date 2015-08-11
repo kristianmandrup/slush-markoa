@@ -177,6 +177,35 @@ If an app name is given, the tag is registered for that app
 
 Creates the global tag `top-menu` under `apps/_global`
 
+```sh
+- template.jade
+- template.marko
+- marko-tag.json
+```
+
+Example: `ui-tabs/marko-tag.json`
+
+```json
+{
+    "@orientation": "string",
+    "@tabs <tab>[]": {
+        "@title": "string"
+    }
+}
+```
+
+### Marko taglibs
+
+Each app has its own taglib file. This file can reference multiple folders if needed.
+
+`marko-taglib.json` example:
+
+```json
+{
+    "tags-dir": ["./components", "./modules"]
+}
+```
+
 #### Multiple tags
 
 -	What is the name of your tag or tags (, separated) ? `top-menu, side-bar, session-bar`
