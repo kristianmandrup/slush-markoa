@@ -22,11 +22,11 @@
   ],
   "main": "slushfile.js",
   "engines": {
-    "node": ">= 0.10.26",
+    "node": ">= 0.12.7",
     "npm": ">=1.4.3"
   },
   "scripts": {
-    "test": "echo \"No tests\""
+    "test": "mocha"
   },
   "dependencies": {
     "chalk-log": "^1.2.0",

@@ -4,8 +4,8 @@
     "version": "0.0.1",
     "homepage": "https://github.com/<%= userName %>/<%= appNameSlug %>",
     "author": {
-        "name": "Kristian Mandrup",
-        "email": "kmandrup@gmail.com"
+        "name": "<%= authorName %>",
+        "email": "<%= authorEmail %>"
     },
     "repository": {
         "type": "git",
@@ -17,20 +17,33 @@
     "license": "MIT",
     "main": "index.js",
     "engines": {
-        "node": ">= 0.11.0",
+        "node": ">= 0.12.0",
         "npm": ">=1.4.3"
     },
     "scripts": {
-        "test": "echo \"No tests\""
+        "test": "mocha"
     },
     "dependencies": {
-        "markoa": "kristianmandrup/markoa",
+        "marooka": "^0.1.2",
         "browser-refresh-taglib": "^1.0.3"
     },
     "devDependencies": {
-      "gulp": "^3.6.2"
+      "gulp": "^3.6.2",
+      "co": "^3.1.0",
+      "co-supertest": "0.0.7",
+      "gulp-exit": "^0.0.2",
+      "chai": "^1.9.1",
+      "gulp-nodemon": "^1.0.4",
+      "gulp-mocha-co": "^0.4.1",
+      "gulp-watch": "^0.6.9",
+      "gulp": "^3.8.7",
+      "supertest": "^0.13.0"
     },
     "keywords": [
-        "markoa"
+      "marooka",
+      "marko",
+      "koa",
+      "jade",
+      "stylus"
     ]
 }
