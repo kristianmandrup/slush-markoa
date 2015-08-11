@@ -35,6 +35,12 @@ Run the generator from within the new folder:
 $ cd my-slush-markoa && slush markoa
 ```
 
+### Layout and Styling
+
+We recommend running the *layout* generator included to get a nice project setup for using Stylus with various cool plugins to make layout and styling of your app a much more fun experience!!!
+
+Note: Be sure to read the `Layout.md` file generated for tips, info etc. ;)
+
 App container generated
 -----------------------
 
