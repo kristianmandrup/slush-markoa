@@ -296,6 +296,12 @@ The `browser.json` that includes the required client-side code is shown below:
 }
 ```
 
+### Browser Widget dependencies
+
+This `browser.json` setup for client side widget dependencies doesn't work as is. Our setup is more advanced. We need the `/widget` folder to expose methods to give us all global widgets and all widgets for each app. Then determine or find the widgets being used on the page, by either: - use a list such as `widgets.json` in the `/page folder` - if no `widgets.json`, parse through the `marko.html` for non-html tags
+
+look up widgets in widget registry as part of yet another compile phase (on `gulp watch`) and dynamically generate the browser.json file (perhaps by having a `browser.json` (no marko widgets) and an `index.browser.json` generated and referenced).
+
 ### Registering the apps
 
 Follow a recipe like the following...
