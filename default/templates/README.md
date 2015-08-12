@@ -3,6 +3,29 @@
 
 <%= appDescription %>
 
+Getting started
+---------------
+
+Run `slush markoa:layout` generator to configure layout with Stylus.
+
+Then run `gulp jade:marko` to compile all `.jade` files into `.marko` files.
+
+Now run `node index.js` to launch the server application. Notice the console debug messages and make sure the index route is added. Open the Chrome browser at `localhost:4000`
+
+Now shut down the node process and try with `browser-refresh`.
+
+### Browser refresh
+
+Install browser-refresh globally on your system
+
+`npm install browser-refresh -g`
+
+Start your server using browser-refresh:
+
+`browser-refresh index.js`
+
+Now whenever you change a `.marko` file directly or via jade compilation it will reload the browser!
+
 Install
 -------
 
@@ -13,12 +36,6 @@ $ npm install <%= appNameSlug %> --save
 ```
 
 ### Development
-
-If you want to add [roots](roots.cx), run the `roots` slush generator:
-
-`slush markoa:roots`
-
-If you have `roots` installed, run:
 
 `gulp watch`
 

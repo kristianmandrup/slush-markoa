@@ -24,6 +24,7 @@
         "test": "mocha"
     },
     "dependencies": {
+        "marko": "^2.7.9",
         "marooka": "^0.1.2",
         "browser-refresh-taglib": "^1.0.3"
     },
