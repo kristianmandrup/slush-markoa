@@ -252,6 +252,8 @@ module.exports = require('marko-widgets').defineComponent({
 
 Read more about how to get the full benefits of reactive Widgets for client and server on the [Marko Widgets page](https://github.com/marko-js/marko-widgets). Enjoy :)
 
+Noe: For more Widget insights, also see [Issue #52](https://github.com/marko-js/marko-widgets/issues/52#issuecomment-130434352)
+
 ### Widgets in the client app
 
 Just include the same app on the client and use the simple `widget.find` API
