@@ -304,6 +304,10 @@ If a taglib import refers to a package.json file then we read the package.json f
 
 For more, see [Issue #110](https://github.com/marko-js/marko/issues/110#issuecomment-125969373)
 
+Since every markoa app has a `marko-taglib.json` file in the root, we can do:
+
+`"taglib-imports": ["account", "casino", ...]` to import the global tag libs from each of the other apps ;) So all apps contribute to the shared lib of global tags!
+
 ### Widgets in the client app
 
 Just include the same app on the client and use the simple `widget.find` API
