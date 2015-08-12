@@ -24,10 +24,11 @@
         "test": "mocha"
     },
     "dependencies": {
-        "marko": "^2.7.9",
-        "marko-widgets": ">= 4.1",
-        "marooka": "^0.1.2",
-        "browser-refresh-taglib": "^1.0.3"
+      "lasso": "^1.10.0",
+      "marko": "^2.7.9",
+      "marko-widgets": ">= 4.1",
+      "marooka": "^0.1.2",
+      "browser-refresh-taglib": "^1.0.3"
     },
     "devDependencies": {
       "gulp": "^3.6.2",

@@ -239,6 +239,7 @@ Name the widget or list widgets to be created, just like for a tag. The simplest
 With a corresponding "ViewModel" or Widget controller:
 
 ```js
+// widget.js
 module.exports = require('marko-widgets').defineComponent({
     template: require('./template.marko'),
 
@@ -256,6 +257,44 @@ module.exports = require('marko-widgets').defineComponent({
 ```
 
 Read more about how to get the full benefits of reactive Widgets for client and server on the [Marko Widgets page](https://github.com/marko-js/marko-widgets). Enjoy :)
+
+### Full page setup
+
+```html
+<lasso-page name="index" package-path="./browser.json" />
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Marko Widgets: Bind</title>
+    <lasso-head/>
+</head>
+<body>
+    <h1>Marko Widgets: Bind</h1>
+
+    <div class="my-component" w-bind="./widget">
+        <h2>Click Me</h2>
+    </div>
+
+    <lasso-body/>
+    <init-widgets/>
+</body>
+</html>
+```
+
+The `browser.json` that includes the required client-side code is shown below:
+
+`src/pages/index/browser.json`
+
+```json
+{
+    "dependencies": [
+        "require: marko-widgets",
+        "require: ./widget"
+    ]
+}
+```
 
 ### Registering the apps
 

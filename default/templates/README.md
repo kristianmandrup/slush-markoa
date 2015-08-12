@@ -254,6 +254,56 @@ Read more about how to get the full benefits of reactive Widgets for client and 
 
 Noe: For more Widget insights, also see [Issue #52](https://github.com/marko-js/marko-widgets/issues/52#issuecomment-130434352)
 
+### Full page setup
+
+```html
+<lasso-page name="index" package-path="./browser.json" />
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Marko Widgets: Bind</title>
+    <lasso-head/>
+</head>
+<body>
+    <h1>Marko Widgets: Bind</h1>
+
+    <div class="my-component" w-bind="./widget">
+        <h2>Click Me</h2>
+    </div>
+
+    <lasso-body/>
+    <init-widgets/>
+</body>
+</html>
+```
+
+The `browser.json` that includes the required client-side code is shown below:
+
+`src/pages/index/browser.json`
+
+```json
+{
+    "dependencies": [
+        "require: marko-widgets",
+        "require: ./widget"
+    ]
+}
+```
+
+### Tag libs
+
+Tag lib definition files `marko-taglib.json` also supports importing other taglibs. This is very useful for making global/share taglibs available locally or merge several taglibs into one...
+
+`"taglib-imports": ["./my-taglib", "other-taglib", "../../package.json"]`
+
+The "taglib-imports" property allows another taglib to be imported into this taglib so that the tags defined in the imported taglib will be part of this taglib.
+
+If a taglib import refers to a package.json file then we read the package.json file and automatically import *all* of the taglibs from the installed modules found in the "dependencies" section
+
+For more, see [Issue #110](https://github.com/marko-js/marko/issues/110#issuecomment-125969373)
+
 ### Widgets in the client app
 
 Just include the same app on the client and use the simple `widget.find` API
