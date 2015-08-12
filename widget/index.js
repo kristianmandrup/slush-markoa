@@ -6,6 +6,8 @@ var _         = require('underscore.string'),
     chalk     = require('chalk-log');
 
 module.exports = function() {
+    // TODO: Ask if it should be a Stateful widget etc.
+    // More prompts for refinement of widget, thanks :)
     return function (done) {
         var prompts = [{
             name: 'widgetName',
