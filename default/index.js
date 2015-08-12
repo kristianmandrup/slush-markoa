@@ -21,8 +21,10 @@ module.exports = function(defaults) {
                 gulp.src(__dirname + '/templates/**')
                     .pipe(template(answers))
                     .pipe(rename(function (file) {
+                        // see https://github.com/wearefractal/vinyl
                         if (file.basename[0] === '_') {
-                            file.basename = '.' + file.basename.slice(1);
+                            if (file.basename !== '_global')
+                              file.basename = '.' + file.basename.slice(1);
                         }
                     }))
                     .pipe(conflict('./'))

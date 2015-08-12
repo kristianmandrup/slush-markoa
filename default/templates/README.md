@@ -155,31 +155,8 @@ Example: `ui-tabs/marko-tag.json`
 
 ```js
 var template = require('./template.marko');
-
 exports.renderer = function(input, out) {
-    var tabs = input.tabs;
-
-    // Tabs will be in the following form:
-    // [
-    //     {
-    //         title: 'Home',
-    //         renderBody: function(out) { ... }
-    //     },
-    //     {
-    //         title: 'Profile',
-    //         renderBody: function(out) { ... }
-    //     },
-    //     {
-    //         title: 'Messages',
-    //         renderBody: function(out) { ... }
-    //     }
-    // ]
-    console.log(tabs.length); // Output: 3
-
-    template.render({
-        tabs: tabs
-    }, out);
-
+  template.render(input, out);
 };
 ```
 
@@ -189,8 +166,8 @@ exports.renderer = function(input, out) {
 <div class="tabs">
     <ul class="nav nav-tabs">
         <li class="tab" for="tab in data.tabs">
-            <a href="#${tab.title}">
-                ${tab.title}
+            <a href="#">
+                ...
             </a>
         </li>
     </ul>
