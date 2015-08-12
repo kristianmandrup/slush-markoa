@@ -1,5 +1,5 @@
 module.exports = function(defaults) {
-  var pluginChoices = ['axis', 'nib', 'rupture', 'fluidity', 'autoprefixer', 'jeet'];
+  var pluginChoices = ['axis', 'nib', 'rupture', 'typographic', 'fluidity', 'autoprefixer', 'jeet'];
   return  [{
       name: 'stylusPlugins',
       type: 'checkbox',

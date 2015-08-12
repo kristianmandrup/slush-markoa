@@ -2,14 +2,18 @@ var gulp = require('gulp');
 var paths = require('../paths');
 var stylus = require('gulp-stylus');
 var sourcemaps = require('gulp-sourcemaps');
-var axis = require('axis')
-var rupture = require('rupture');
-var fluidity = require('fluidity');
-var jeet = require('jeet');
-var nib = require('nib');
-var autoprefixer = require('autoprefixer-stylus');
 
-var stylusPlugins = [nib(), fluidity(), axis(), rupture(), jeet(), autoprefixer()];
+// TODO: Uncomment as per the plugins you use and have installed!
+// var axis = require('axis')
+// var rupture = require('rupture');
+// var fluidity = require('fluidity');
+// var fluidity = require('typographic');
+// var jeet = require('jeet');
+// var nib = require('nib');
+// var autoprefixer = require('autoprefixer-stylus');
+// var stylusPlugins = [nib(), fluidity(), axis(), rupture(), jeet(), autoprefixer(), typographic()];
+
+var stylusPlugins = [];
 var stylusOpts = {'include css': true, use: stylusPlugins};
 
 gulp.task('stylus', function () {
