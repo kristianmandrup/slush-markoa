@@ -182,14 +182,14 @@ exports.renderer = function(input, out) {
 ```html
 <div class="tabs">
     <ul class="nav nav-tabs">
-        <li class="tab" for="tab in data.tabs">
-            <a href="#">
-                ...
-            </a>
-        </li>
+    <li class="tab" for="tab in data.tabs">
+        <a href="#$tab.link">
+            $tab.title
+        </a>
+    </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" for="tab in data.tabs">
+        <div class="tab-pane" for="tab in $data.tabs">
             <invoke function="tab.renderBody(out)"/>
         </div>
     </div>
