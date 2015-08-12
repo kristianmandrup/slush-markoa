@@ -11,6 +11,7 @@ Generators included
 -	`slush markoa:layout` (Stylus and Jade->Marko configuration)
 -	`slush markoa:roots` (roots.cx configuration)
 -	`slush markoa:tag` (add one or more marko tags)
+-	`slush markoa:widget` (add one or more marko widgets)
 
 Getting Started
 ---------------
@@ -218,6 +219,43 @@ Each app has its own taglib file. This file can reference multiple folders if ne
 -	For which app (empty: global) ? `index`
 
 Creates the tags: `top-menu`, `side-bar` and `session-bar` for the app `apps/index`
+
+### Marko Widgets
+
+[Marko Widgets](https://github.com/marko-js/marko-widgets) are special kinds of tags that support dynamic rendering and data binding etc. much like Reactive widgets/components from other frameworks such as React components. However Marko Widgets support both client and server side rendering amongst many other benefits, such as much lower footprint (kb) and higher server rendering performance (x10) than typical React components.
+
+To create one or more widgets:
+
+`slush markoa:widget`
+
+Name the widget or list widgets to be created, just like for a tag. The simplest Widget template looks something like this:
+
+```html
+<div w-bind>
+    Hello $data.name
+</div>
+```
+
+With a corresponding "ViewModel" or Widget controller:
+
+```js
+module.exports = require('marko-widgets').defineComponent({
+    template: require('./template.marko'),
+
+    getTemplateData: function(state, input) {
+        return {
+            name: input.name || 'unknown name'
+        };
+    },
+
+    init: function() {
+        var el = this.el; // The root DOM element that the widget is bound to
+        console.log('Initializing widget: ' + el.id);
+    }
+});
+```
+
+Read more about how to get the full benefits of reactive Widgets for client and server on the [Marko Widgets page](https://github.com/marko-js/marko-widgets). Enjoy :)
 
 ### Registering the apps
 
