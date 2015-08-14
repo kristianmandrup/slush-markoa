@@ -7,6 +7,9 @@ var gulp = require('gulp'),
     path = require('path'),
     chalk = require('chalk-log');
 
+var writer = require('./writer');
+var jsonfile = require('jsonfile')
+
 module.exports = function(answers, targetDir) {
   var compFileName = answers.tagName;
   var subFoldersPath = '';
@@ -41,14 +44,27 @@ module.exports = function(answers, targetDir) {
         .pipe(conflict('./'))
         .pipe(gulp.dest(tagSubFolder))
         .pipe(install())
+    // "./menu/marko-taglib.json"
+    var importStr = '\"taglib-imports\": [\".\/menu\/marko-taglib.json\"]'
+    var parentTagLibFile = path.join(componentsDir, 'marko-taglib.json');
 
-        var importStr = '\"taglib-imports\": [\".\/_global\/components\/menu\/marko-taglib.json\"]'
+    // chalk.log('---------------------------------------------------------------------------------')
+    // chalk.note('Please insert entry in: ' + parentTagLibFile);
+    // chalk.ok(importStr);
+    // chalk.log('---------------------------------------------------------------------------------')
+    var fullParentTagLibFile = './' + parentTagLibFile;
+    var tagLibObj = {}
+    try {
+       tagLibObj = jsonfile.readFileSync(fullParentTagLibFile);
+    } cacth (e) {
+      console.warn('missing taglib: ' + fullParentTagLibFile);      
+    }
 
-    var parentTagLibFile = path.join(targetDir, 'marko-taglib.json');
-    chalk.log('---------------------------------------------------------------------------------')
-    chalk.note('Please insert entry in: ' + parentTagLibFile);
-    chalk.ok(importStr);
-    chalk.log('---------------------------------------------------------------------------------')
+    tagLibObj['taglib-imports'] = tagLibObj['taglib-imports'] || [];
+    var importLib = "./menu/marko-taglib.json";
+    if (tagLibObj['taglib-imports'].indexOf(importLib) < 0)
+      tagLibObj['taglib-imports'].push(importLib);
+    writer.toJsonFile(fullParentTagLibFile, tagLibObj)
   }
 
 

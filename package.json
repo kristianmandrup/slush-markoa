@@ -39,6 +39,7 @@
     "gulp-template": "^0.1.1",
     "iniparser": "^1.0.5",
     "inquirer": "^0.8.0",
+    "jsonfile": "^2.2.1",
     "slush": ">=1.0.0",
     "spawn-command": "0.0.2",
     "underscore.string": "^2.3.3"
