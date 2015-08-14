@@ -30,7 +30,28 @@ module.exports = function(answers, targetDir) {
         return done();
       }
   }
-  var dest = path.join(targetDir, 'components', subFoldersPath, answers.tagNameSlug);
+  var componentsDir = path.join(targetDir, 'components');
+  var tagSubFolder = path.join(componentsDir, subFoldersPath)
+  var dest = path.join(tagSubFolder, answers.tagNameSlug);
+
+  if (!_.isBlank(subFoldersPath)) {
+    // create taglib for sub-folder
+    gulp.src(__dirname + '/special/**')
+        .pipe(template(answers))
+        .pipe(conflict('./'))
+        .pipe(gulp.dest(tagSubFolder))
+        .pipe(install())
+
+        var importStr = '\"taglib-imports\": [\".\/_global\/components\/menu\/marko-taglib.json\"]'
+
+    var parentTagLibFile = path.join(targetDir, 'marko-taglib.json');
+    chalk.log('---------------------------------------------------------------------------------')
+    chalk.note('Please insert entry in: ' + parentTagLibFile);
+    chalk.ok(importStr);
+    chalk.log('---------------------------------------------------------------------------------')
+  }
+
+
   answers.tagNamePretty = _.humanize(answers.tagName);
   gulp.src(__dirname + '/templates/**')
       .pipe(template(answers))
