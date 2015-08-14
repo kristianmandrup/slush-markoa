@@ -26,6 +26,15 @@ Start your server using browser-refresh:
 
 Now whenever you change a `.marko` file directly or via jade compilation it will reload the browser!
 
+Compile apps
+------------
+
+You can now run:
+
+`node compile-apps`
+
+This will "compile" the apps and prepare widget maps and generate appropriate `browser.json` files for use with lasso, the asset dependency manager/injector ;)
+
 Install
 -------
 
