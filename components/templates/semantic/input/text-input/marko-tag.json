@@ -4,5 +4,8 @@
     "@focus": "string",
     "@loading": "string",
     "@error": "string",
-    "@icon": "string"
+    "@icon": "string",
+    "@action": "string",
+    "@link": "string",
+    "@menu": "object"
 }
