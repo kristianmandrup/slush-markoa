@@ -1,4 +1,4 @@
-div(class='ui input ${data.hasIcon} ${data.hasAction} ${data.focus} ${data.loading} ${data.error} ${data.align} ${data.labeled}')
+div(class='ui ${data.size} input ${data.inverted} ${data.hasIcon} ${data.hasAction} ${data.focus} ${data.loading} ${data.error} ${data.align} ${data.labeled}')
   if(test='$data.label')
     .ui.label
       $data.label
@@ -9,6 +9,10 @@ div(class='ui input ${data.hasIcon} ${data.hasAction} ${data.focus} ${data.loadi
     .menu
       for(each='item in data.menu.items')
       .item $item.label
+  if(test='$data.select')
+    select.ui.compact.selection.dropdown
+      for(each='item in data.select.items')
+        option(value='$item.value') $item.label
   if(test='$data.link')
     a.ui.tag.label $data.link
   if(test='$data.action')
