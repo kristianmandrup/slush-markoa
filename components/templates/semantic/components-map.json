@@ -1,0 +1,20 @@
+{
+  "tags": {
+    "icon-list": "/Users/kristianmandrup/repos/test123/repo-manager-v3/apps/_global/components/icon-list/renderer.js",
+    "icon-list-item": "/Users/kristianmandrup/repos/test123/repo-manager-v3/apps/_global/components/icon-list-item/renderer.js",
+    "image-list-item": "/Users/kristianmandrup/repos/test123/repo-manager-v3/apps/_global/components/image-list-item/renderer.js",
+    "link-item": "/Users/kristianmandrup/repos/test123/repo-manager-v3/apps/_global/components/link-item/renderer.js",
+    "link-button": "/Users/kristianmandrup/repos/test123/repo-manager-v3/apps/_global/components/link-button/renderer.js"
+  },
+  "widgets": {
+    "app-hello": "/Users/kristianmandrup/repos/test123/repo-manager-v3/apps/_global/components/app-hello/widget.js"
+  },
+  "all": {
+    "icon-list": "/Users/kristianmandrup/repos/test123/repo-manager-v3/apps/_global/components/icon-list/renderer.js",
+    "icon-list-item": "/Users/kristianmandrup/repos/test123/repo-manager-v3/apps/_global/components/icon-list-item/renderer.js",
+    "image-list-item": "/Users/kristianmandrup/repos/test123/repo-manager-v3/apps/_global/components/image-list-item/renderer.js",
+    "link-item": "/Users/kristianmandrup/repos/test123/repo-manager-v3/apps/_global/components/link-item/renderer.js",
+    "link-button": "/Users/kristianmandrup/repos/test123/repo-manager-v3/apps/_global/components/link-button/renderer.js",
+    "app-hello": "/Users/kristianmandrup/repos/test123/repo-manager-v3/apps/_global/components/app-hello/widget.js"
+  }
+}

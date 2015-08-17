@@ -7,14 +7,13 @@ var gulp = require('gulp'),
     path = require('path'),
     chalk = require('chalk-log');
 
-mapped = {
-  'semantic UI': 'semantic'
-}
+var jsonfile = require('jsonfile')
 
 module.exports = function(answers) {
-  var uiFolder = mapped[answers.uiFramework] || answers.uiFramework;
+  var templateDir = answers.where === '' ? 'global' : answers.appName;
+  var targetDir = answers.where === '' ? '_global' : answers.appName;
 
-  gulp.src(__dirname + '/templates/' + uiFolder)
+  gulp.src(__dirname + '/templates/' + templateDir)
       .pipe(template(answers))
       .pipe(rename(function (file) {
           if (file.basename[0] === '_') {
@@ -22,7 +21,7 @@ module.exports = function(answers) {
           }
       }))
       .pipe(conflict('./'))
-      .pipe(gulp.dest('./apps/_global'))
+      .pipe(gulp.dest('./apps/' + targetDir + '/state'))
       .pipe(install())
       .on('end', function () {
           done();
