@@ -11,6 +11,7 @@ Generators included
 -	`slush markoa:layout` (Stylus and Jade->Marko configuration)
 -	`slush markoa:roots` (roots.cx configuration)
 -	`slush markoa:tag` (add one or more marko tags)
+-	`slush markoa:tag` (add one or more marko taglibs)
 -	`slush markoa:widget` (add one or more marko widgets)
 
 Getting Started

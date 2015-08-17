@@ -45,7 +45,7 @@ module.exports = function(answers, targetDir) {
         .pipe(gulp.dest(tagSubFolder))
         .pipe(install())
     // "./menu/marko-taglib.json"
-    var importStr = '\"taglib-imports\": [\".\/menu\/marko-taglib.json\"]'
+    var importStr = '\"taglib-imports\": [\".\/' + tagSubFolder + '\/marko-taglib.json\"]'
     var parentTagLibFile = path.join(componentsDir, 'marko-taglib.json');
 
     // chalk.log('---------------------------------------------------------------------------------')
@@ -56,15 +56,15 @@ module.exports = function(answers, targetDir) {
     var tagLibObj = {}
     try {
        tagLibObj = jsonfile.readFileSync(fullParentTagLibFile);
-    } cacth (e) {
-      console.warn('missing taglib: ' + fullParentTagLibFile);      
+    } catch (e) {
+      console.warn('missing taglib: ' + fullParentTagLibFile);
     }
 
     tagLibObj['taglib-imports'] = tagLibObj['taglib-imports'] || [];
-    var importLib = "./menu/marko-taglib.json";
+    var importLib = './' + tagSubFolder + '/marko-taglib.json';
     if (tagLibObj['taglib-imports'].indexOf(importLib) < 0)
       tagLibObj['taglib-imports'].push(importLib);
-    writer.toJsonFile(fullParentTagLibFile, tagLibObj)
+    jsonfile.writeFileSync(fullParentTagLibFile, tagLibObj, {spaces: 4})
   }
 
 

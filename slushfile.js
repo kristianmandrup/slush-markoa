@@ -50,7 +50,7 @@ gulp.task('default', tasks.default);
 
 console.log('slush-markoa 2.8');
 
-for (let name of ['app', 'tag', 'roots', 'layout', 'widget']) {
+for (let name of ['app', 'tag', 'taglib', 'roots', 'layout', 'widget']) {
   tasks[name] = require('./' + name)();
   gulp.task(name, tasks[name]);
 }
