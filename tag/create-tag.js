@@ -7,7 +7,6 @@ var gulp = require('gulp'),
     path = require('path'),
     chalk = require('chalk-log');
 
-var writer = require('./writer');
 var jsonfile = require('jsonfile')
 
 module.exports = function(answers, targetDir) {
@@ -27,15 +26,18 @@ module.exports = function(answers, targetDir) {
   answers.tagNameSlug = _.slugify(compFileName);
   if (!answers.tagNameSlug.match(/-/)) {
       if (subFoldersPath.length) {
-        answers.tagNameSlug = [subFolders[subFolders.length -1], answers.tagNameSlug].join('-');
+        var lastFolderName = subFolders[subFolders.length -1];
+        answers.tagNameSlug = [answers.tagNameSlug, lastFolderName].join('-');
       } else {
         chalk.error('Tag name must be of the form  xx-yyy, was:' + answers.tagNameSlug);
         return done();
       }
   }
   var componentsDir = path.join(targetDir, 'components');
-  var tagSubFolder = path.join(componentsDir, subFoldersPath)
+  var tagSubFolder = path.join(componentsDir, subFoldersPath);
   var dest = path.join(tagSubFolder, answers.tagNameSlug);
+
+  var importPath = path.join('./', subFoldersPath);
 
   if (!_.isBlank(subFoldersPath)) {
     // create taglib for sub-folder
@@ -44,14 +46,8 @@ module.exports = function(answers, targetDir) {
         .pipe(conflict('./'))
         .pipe(gulp.dest(tagSubFolder))
         .pipe(install())
-    // "./menu/marko-taglib.json"
-    var importStr = '\"taglib-imports\": [\".\/' + tagSubFolder + '\/marko-taglib.json\"]'
-    var parentTagLibFile = path.join(componentsDir, 'marko-taglib.json');
 
-    // chalk.log('---------------------------------------------------------------------------------')
-    // chalk.note('Please insert entry in: ' + parentTagLibFile);
-    // chalk.ok(importStr);
-    // chalk.log('---------------------------------------------------------------------------------')
+    var parentTagLibFile = path.join(componentsDir, 'marko-taglib.json');
     var fullParentTagLibFile = './' + parentTagLibFile;
     var tagLibObj = {}
     try {
@@ -61,12 +57,13 @@ module.exports = function(answers, targetDir) {
     }
 
     tagLibObj['taglib-imports'] = tagLibObj['taglib-imports'] || [];
-    var importLib = './' + tagSubFolder + '/marko-taglib.json';
-    if (tagLibObj['taglib-imports'].indexOf(importLib) < 0)
-      tagLibObj['taglib-imports'].push(importLib);
-    jsonfile.writeFileSync(fullParentTagLibFile, tagLibObj, {spaces: 4})
-  }
+    var importLib = './' + importPath + '/marko-taglib.json';
 
+    if (tagLibObj['taglib-imports'].indexOf(importLib) < 0) {
+      tagLibObj['taglib-imports'].push(importLib);
+      jsonfile.writeFileSync(fullParentTagLibFile, tagLibObj, {spaces: 4})
+    }
+  }
 
   answers.tagNamePretty = _.humanize(answers.tagName);
   gulp.src(__dirname + '/templates/**')
