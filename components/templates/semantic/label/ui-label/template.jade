@@ -1,2 +1,8 @@
-div(class='$data.isTag $data.isRibbon $data.isAttached ui $data.align $data.placement label')
-  i(class='$data.icon  icon) $data.label
+div(class='$data.isTag $data.isRibbon $data.size $data.color $data.isCircular $data.isAttached ui $data.align $data.placement $data.float label')
+  if(test='$data.icon')
+    ui-icon(attrs='$data.icon') 
+  if(test='$data.image')
+    ui-image(attrs='$data.image') 
+  $data.label
+  if(test='$data.detail')
+    div(class='detail') $data.detail
