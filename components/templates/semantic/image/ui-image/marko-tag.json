@@ -1,4 +1,6 @@
 {
     "@src": "string",
-    "@size": "string"
+    "@size": "string",
+    "@align": "string",
+    "@placement": "string"
 }

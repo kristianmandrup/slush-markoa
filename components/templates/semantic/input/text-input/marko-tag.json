@@ -1,0 +1,8 @@
+{
+    "@type": "string",
+    "@placeholder": "string",
+    "@focus": "string",
+    "@loading": "string",
+    "@error": "string",
+    "@icon": "string"
+}
