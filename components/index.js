@@ -10,7 +10,7 @@ module.exports = function() {
         var prompts = [{
             type: 'list',
             name: 'uiFramework',
-            choices: ['Semantic UI']
+            choices: ['Semantic UI'],
             message: 'Which UI framework ?',
             default: 'Semantic UI'
         }, {
