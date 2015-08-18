@@ -1,0 +1,6 @@
+{
+    "@label": "string",
+    "@name": "boolean",
+    "@checked": "boolean",
+    "@tab": "number"
+}
