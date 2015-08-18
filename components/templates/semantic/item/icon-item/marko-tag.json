@@ -1,8 +1,5 @@
 {
     "@label": "string",
     "@desc": "string",
-    "@size": "string",
-    "@icon": "string",
-    "@color": "string",
-    "@align": "string"
+    "@ui": "string"
 }

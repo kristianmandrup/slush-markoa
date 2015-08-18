@@ -1,4 +1,5 @@
 {
     "@label": "string",
+    "@ui": "string",    
     "@lv": "string"
 }

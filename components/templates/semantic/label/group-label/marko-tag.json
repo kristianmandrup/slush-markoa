@@ -1,4 +1,4 @@
 {
-    "@size": "string",
+    "@ui": "string",
     "@list": "array"
 }

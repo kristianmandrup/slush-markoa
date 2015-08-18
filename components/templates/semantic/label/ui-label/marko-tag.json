@@ -1,13 +1,7 @@
 {
     "@label": "string",
-    "@tag": "string",
-    "@ribbon": "string",
-    "@attached": "string",
-    "@align": "string",
-    "@placement": "string",
-    "@float": "string",
-    "@detail": "string",
-    "@circular": "string",
-    "@color": "string",
-    "@size": "string"
+    "@ui": "string",
+    "@icon": "string",
+    "@image": "string",
+    "@detail": "string"
 }

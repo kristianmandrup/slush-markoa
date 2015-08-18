@@ -1,5 +1,5 @@
 {
   "@label": "string",
   "@link": "string",
-  "@type": "string"
+  "@ui": "string"
 }

@@ -1,3 +1,6 @@
-.ui.buttons
+div(class='ui $data.ui buttons')
   for(each='item in data.list')
-    action-button(attrs='$item')
+    if(test='$item.icon')
+      icon-button(attrs='$item')
+    else
+      action-button(attrs='$item')

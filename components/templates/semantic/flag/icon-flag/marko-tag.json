@@ -1,3 +1,4 @@
 {
-    "@country": "string"
+    "@country": "string",
+    "@ui": "string"
 }

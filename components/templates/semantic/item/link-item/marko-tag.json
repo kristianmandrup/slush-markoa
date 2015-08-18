@@ -1,5 +1,6 @@
 {
   "@label": "string",
   "@link": "string",
-  "@active": "boolean"
+  "@ui": "string",
+  "@status": "string"
 }
