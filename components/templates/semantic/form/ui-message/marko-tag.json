@@ -1,4 +1,6 @@
 {
+    "@ui": "string",
     "@header": "string",
+    "@status": "string",
     "@list": "array"
 }

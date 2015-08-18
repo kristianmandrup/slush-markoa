@@ -1,5 +1,5 @@
 {
     "@icon": "string",
     "@label": "string",
-    "@align": "string"
+    "@ui": "string"
 }

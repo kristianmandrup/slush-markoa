@@ -1,3 +1,4 @@
 {
-    "@label": "string"
+    "@ui": "string",
+    "@status": "string"
 }
