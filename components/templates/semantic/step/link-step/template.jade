@@ -1,0 +1,9 @@
+a(class='$data.status step')
+  if(test='${data.icon}')
+    ui-icon(icon='$data.icon')
+  if(test='${data.hasContent}')
+    .content
+      if(test='$data.label')
+        .title $data.label
+      if(test='$data.desc')
+        .description $data.desc

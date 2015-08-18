@@ -1,5 +1,6 @@
 {
     "@label": "string",
+    "@size": "string",
     "@icon": "string",
     "@link": "object",
     "@header": "string",

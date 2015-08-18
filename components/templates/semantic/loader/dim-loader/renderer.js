@@ -1,6 +1,6 @@
 var template = require('./template.marko');
 
 exports.renderer = function(input, out) {
-    // TODO: handle data.icon.size
-    template.render(input, out);
+  input.active = input.active ? 'active' : '';
+  template.render(input, out);
 };
