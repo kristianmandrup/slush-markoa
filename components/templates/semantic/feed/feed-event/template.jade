@@ -2,7 +2,15 @@
   .label
     img(src='$data.src')
   .content
-    .date
-      $data.date
-    .summary
-      $data.content
+    if(test='$data.date')
+      .date
+        $data.date
+    if(test='$data.content')
+      .summary
+        $data.content
+    if(test='$data.meta')
+      .meta
+        $data.meta
+    if(test='$data.extra')
+      .extra
+        $data.extra
