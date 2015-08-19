@@ -1,5 +1,9 @@
 div(class='ui $data.ui statistic')
   .value
-    | $data.value
+    if(test='$data.img')
+      ui-image(attrs='$data.img')
+    if(test='$data.icon')
+      ui-icon(attrs='$data.icon')
+    $data.value
   .label
-    | $data.label
+    $data.label
