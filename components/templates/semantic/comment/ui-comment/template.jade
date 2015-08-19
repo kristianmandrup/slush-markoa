@@ -1,0 +1,14 @@
+.comment
+  if(test='$data.avatar')
+    avatar-img(attrs='$data.avatar')
+  .content
+    a.author Matt
+    if(test='$data.meta')
+      .metadata
+        span(class='$data.meta.ui') $data.meta.label
+    .text
+      | $data.text
+    if(test='$data.actions')
+      .actions
+        for(each='action in data.actions')
+          a(class='$action.ui') $action.label
