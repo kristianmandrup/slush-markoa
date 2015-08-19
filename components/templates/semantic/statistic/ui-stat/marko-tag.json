@@ -1,5 +1,7 @@
 {
     "@ui": "string",
     "@value": "string",
-    "@label": "string"
+    "@label": "string",
+    "@img": "string",
+    "@icon": "string"
 }
