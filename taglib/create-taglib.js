@@ -57,6 +57,7 @@ module.exports = function(answers, targetDir) {
 
   if (tagLibObj['taglib-imports'].indexOf(importLib) < 0) {
     tagLibObj['taglib-imports'].push(importLib);
+    tagLibObj['taglib-imports'].sort();
     jsonfile.writeFileSync(fullParentTagLibFile, tagLibObj, {spaces: 4})
   } // else already imported
 }
