@@ -1,7 +1,7 @@
 {
   "name": "slush-markoa",
   "description": "Markoa app generator",
-  "version": "0.3.10",
+  "version": "0.3.11",
   "homepage": "https://github.com/kristianmandrup/slush-markoa",
   "author": {
     "name": "Kristian Mandrup",

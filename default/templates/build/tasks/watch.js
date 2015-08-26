@@ -1,2 +1,2 @@
 var gulp = require('gulp');
-gulp.task('watch', ['stylus:watch', 'jade:watch']);
+gulp.task('watch', ['jade:watch']);
