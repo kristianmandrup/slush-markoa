@@ -30,6 +30,10 @@ module.exports = function(defaults) {
                 })
 
                 let modules = ['jade-marko', 'browser-sync', 'koa-browser-sync', 'jade', 'gulp-stylus', 'gulp-util', 'stylus', 'sugar', 'gulp-watch', 'gulp-sourcemaps', 'require-dir'];
+                if (answers.sass) {
+                  modules.push('gulp-sass');
+                }
+
                 for (let name of stylusModules)
                   modules.push(name);
                 let npmModules = modules.join(' ');

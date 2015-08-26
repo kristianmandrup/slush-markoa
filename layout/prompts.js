@@ -8,6 +8,10 @@ module.exports = function(defaults) {
       default: pluginChoices
   }, {
       type: 'confirm',
+      name: 'sass',
+      message: 'You want SASS as well?'
+  }, {
+      type: 'confirm',
       name: 'moveon',
       message: 'Continue?'
   }];
