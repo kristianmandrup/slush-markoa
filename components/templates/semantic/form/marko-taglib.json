@@ -1,7 +1,0 @@
-{
-    "tags-dir": ".",
-    "taglib-imports": [
-        "./field/marko-taglib.json",
-        "./input/marko-taglib.json"
-    ]
-}

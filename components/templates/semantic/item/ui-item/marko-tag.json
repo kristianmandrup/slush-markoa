@@ -1,9 +1,0 @@
-{
-    "@label": "string",
-    "@size": "string",
-    "@icon": "string",
-    "@link": "object",
-    "@header": "string",
-    "@desc": "string",
-    "@content": "string"
-}

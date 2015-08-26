@@ -1,5 +1,0 @@
-{
-    "@ui": "string",
-    "@login": "object",
-    "@registration": "object"
-}
