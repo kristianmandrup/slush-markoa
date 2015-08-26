@@ -24,10 +24,11 @@
         "test": "mocha"
     },
     "dependencies": {
-      "lasso": "^1.10.0",
-      "marko": "^2.7.16",
+      "lasso": "^1.10.2",
+      "marko": "marko-js/marko#master",
       "marko-widgets": "marko-js/marko-widgets#master",
       "marooka": "kristianmandrup/markoa#master",
+      "marko-semantic-ui-taglibs": "kristianmandrup/marko-semantic-ui-taglibs#master",
       "browser-refresh-taglib": "^1.0.3"
     },
     "devDependencies": {
