@@ -13,7 +13,11 @@ var gulp = require('gulp'),
 var util = require('util');
 
 let pluginMap = {
-  autoprefixer: 'autoprefixer-stylus'
+  autoprefixer: 'autoprefixer-stylus',
+  clearfix: 'postcss-clearfix',
+  'responsive-type': 'postcss-responsive-type',
+  position: 'postcss-position',
+  rucksack: 'rucksack-css'
 };
 
 module.exports = function(defaults) {
@@ -29,6 +33,11 @@ module.exports = function(defaults) {
                   return pluginMap[name] || name;
                 })
 
+                let postCssModules = answers.postCssPlugins.map(function(name) {
+                  return pluginMap[name] || name;
+                })
+
+                // poststylus = require('poststylus');
                 let modules = ['jade-marko', 'browser-sync', 'koa-browser-sync', 'jade', 'gulp-stylus', 'gulp-util', 'stylus', 'sugar', 'gulp-watch', 'gulp-sourcemaps', 'require-dir'];
                 if (answers.sass) {
                   modules.push('gulp-sass');
@@ -36,6 +45,10 @@ module.exports = function(defaults) {
 
                 for (let name of stylusModules)
                   modules.push(name);
+
+                for (let name of postCssModules)
+                  modules.push(name);
+
                 let npmModules = modules.join(' ');
                 let npmInstall = ['npm install', npmModules, '--save-dev'].join(' ');
 
@@ -45,7 +58,7 @@ module.exports = function(defaults) {
                 var installCommand = spawnCommand(npmInstall);
 
                 installCommand.stdout.on('data', function (data) {
-                  console.log('data', data.toString());
+                  console.log(data.toString());
                 });
 
                 installCommand.on('exit', function (exitCode) {
