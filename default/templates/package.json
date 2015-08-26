@@ -25,9 +25,9 @@
     },
     "dependencies": {
       "lasso": "^1.10.0",
-      "marko": "^2.7.9",
-      "marko-widgets": ">= 4.1",
-      "marooka": "^0.1.2",
+      "marko": "^2.7.16",
+      "marko-widgets": "marko-js/marko-widgets#master",
+      "marooka": "^0.1.6",
       "browser-refresh-taglib": "^1.0.3"
     },
     "devDependencies": {
@@ -47,6 +47,7 @@
       "marko",
       "koa",
       "jade",
-      "stylus"
+      "stylus",
+      "sass"
     ]
 }
