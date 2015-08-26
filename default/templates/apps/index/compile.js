@@ -1,1 +1,1 @@
-require('marooka').components.categorize(__dirname, 'prepare');
+require('marooka').components.categorize(__dirname, {type: 'app'});

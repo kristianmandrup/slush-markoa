@@ -27,7 +27,7 @@
       "lasso": "^1.10.0",
       "marko": "^2.7.16",
       "marko-widgets": "marko-js/marko-widgets#master",
-      "marooka": "^0.1.6",
+      "marooka": "kristianmandrup/markoa#master",
       "browser-refresh-taglib": "^1.0.3"
     },
     "devDependencies": {
