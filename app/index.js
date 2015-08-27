@@ -15,11 +15,11 @@ var gulp = require('gulp'),
     _ = require('underscore.string'),
     inquirer = require('inquirer'),
     path = require('path'),
+    chalk = require('chalk-log'),
     fs = require('fs-extra');
 
 // move
 function moveFile(src, dest) {
-  console.log('MOVE', src, dest);
   fs.copySync(src, dest, function (err) {
     if (err) return console.error(err)
     fs.remove(src, function (err) {
@@ -38,6 +38,10 @@ module.exports = function() {
             name: 'moveon',
             message: 'Continue?'
         }];
+
+        chalk.ok('Compile your new app by running:')
+        chalk.log('gulp jade:marko');
+
         //Ask
         inquirer.prompt(prompts,
             function (answers) {
