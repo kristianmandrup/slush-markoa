@@ -14,7 +14,9 @@ module.exports = function(answers, tag, targetDir, done) {
   var subFoldersPath = '';
   var subFolders = [];
 
-  // TODO: use the Tag object!!!
+  // use the Tag object!!!
+  answers.tagSchema = tag.jsonSchema();
+  answers.preRenderStatement = tag.preRenderStatements();
 
   //sub folder
   var splits = compFileName.split(':');
