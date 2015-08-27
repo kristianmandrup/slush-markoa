@@ -17,6 +17,7 @@ module.exports = function(answers, tag, targetDir, done) {
   // use the Tag object!!!
   answers.tagSchema = tag.jsonSchema();
   answers.preRenderStatement = tag.preRenderStatements();
+  answers.jadeTemplate = tag.jadeTemplate();
 
   //sub folder
   var splits = compFileName.split(':');

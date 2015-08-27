@@ -6,40 +6,52 @@ var _         = require('underscore.string'),
     chalk     = require('chalk-log');
 
 var doTag = require('./do-tag');
+var createListTag = require('./list-tag/create');
+var createAttribute = require('./attribute/create');
+
+function buildAttributes(done) {
+  var attributes = [];
+  for (let name of attributeNames) {
+    createAttribute(function(attribute) {
+      attributes.push(attribute);
+
+      if (name === attributeNames[attributeNames.length -1])
+        done(attributes);
+    });
+  }
+}
+
+function buildTag(answers, attributes, done) {
+  if (!answers.listTag) {
+    var Tag = require('./tag');
+    done(new Tag(attributes));
+    return;
+  }
+
+  createListTag(function(tag) {
+    done(tag)
+  });
+}
+
+
 
 module.exports = function() {
     return function (done) {
-        var prompts = [{
-            name: 'tagName',
-            message: 'What is the name of your tag or tags (, separated) ?',
-        }, {
-            name: 'appName',
-            message: 'For which app (empty: global) ?'
-        }, {
-            name: 'attributeNames',
-            message: 'What are the attributes used by the tag (, separated) ?'
-        }, {
-            type: 'confirm',
-            name: 'moveon',
-            message: 'Continue?'
-        }];
+        let prompts = require('./prompts');
         //Ask
         inquirer.prompt(prompts,
             function (answers) {
-                if (!answers.moveon) {
-                    return done();
-                }
+              if (!answers.moveon) {
+                return done();
+              }
 
-                var attributes = [];
-                for (let name of attributeNames) {
-                  itemTag(name, function(attribute) {
-                    attributes.push(attribute);
-                  });
-                  let tag = new Tag(attributes);
+              buildAttributes(function(attributes) {
+                buildTag(answers, attributes, function(tag) {
                   doTag(answers, tag, function() {
                     done();
                   })
-                }
+                });
+              })
             }
         );
     }

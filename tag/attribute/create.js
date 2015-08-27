@@ -4,7 +4,7 @@ var inquirer  = require('inquirer');
 var Attribute = require('./attribute');
 
 module.exports = function(done) {
-  var prompts = require('./attribute/prompts');
+  var prompts = require('./prompts');
   var defaults = {
     types: ['string', 'list', 'number', 'boolean', 'date']
   };
