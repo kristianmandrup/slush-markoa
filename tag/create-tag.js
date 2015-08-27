@@ -9,10 +9,12 @@ var gulp = require('gulp'),
 
 var jsonfile = require('jsonfile')
 
-module.exports = function(answers, targetDir) {
+module.exports = function(answers, tag, targetDir, done) {
   var compFileName = answers.tagName;
   var subFoldersPath = '';
   var subFolders = [];
+
+  // TODO: use the Tag object!!!
 
   //sub folder
   var splits = compFileName.split(':');

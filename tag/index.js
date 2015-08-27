@@ -5,6 +5,8 @@ var _         = require('underscore.string'),
     path      = require('path'),
     chalk     = require('chalk-log');
 
+var doTag = require('./do-tag');
+
 module.exports = function() {
     return function (done) {
         var prompts = [{
@@ -13,6 +15,9 @@ module.exports = function() {
         }, {
             name: 'appName',
             message: 'For which app (empty: global) ?'
+        }, {
+            name: 'attributeNames',
+            message: 'What are the attributes used by the tag (, separated) ?'
         }, {
             type: 'confirm',
             name: 'moveon',
@@ -24,25 +29,16 @@ module.exports = function() {
                 if (!answers.moveon) {
                     return done();
                 }
-                if (_.isBlank(answers.tagName)) {
-                  chalk.error('Tag name can NOT be empty');
-                  done();
-                }
-                answers.appName = _.clean(answers.appName);
-                var targetDir = _.isBlank(answers.appName) ? './apps/_global' : path.join('./apps', answers.appName);
 
-                var createTag = require('./create-tag');
-
-                if (answers.tagName.match(/,/)) {
-                  var tags = answers.tagName.split(',').map(function(tag) {
-                      return _.clean(tag);
+                var attributes = [];
+                for (let name of attributeNames) {
+                  itemTag(name, function(attribute) {
+                    attributes.push(attribute);
+                  });
+                  let tag = new Tag(attributes);
+                  doTag(answers, tag, function() {
+                    done();
                   })
-                  for (let tag of tags) {
-                    var answers = {tagName: tag, appName: answers.appName}
-                    createTag(answers, targetDir);
-                  }
-                } else {
-                  createTag(answers, targetDir);
                 }
             }
         );
