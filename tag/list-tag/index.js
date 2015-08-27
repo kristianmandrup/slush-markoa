@@ -1,5 +1,10 @@
+'use strict';
+
+var extend = require('extend');
+var Tag = require('../tag');
+
 var ListTag = function(props, attributes) {
-  this.attribute = attribute;
+  this.attributes = attributes;
   this.name = props.name;
   this.tagName = props.tagName;
 }
@@ -18,5 +23,7 @@ ListTag.prototype = {
     return this.container() + '\n  ' + this.loop() + '\n    ' + this.item();
   }
 }
+
+extend(ListTag.prototype, Tag.prototype);
 
 module.exports = ListTag;

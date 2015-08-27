@@ -1,4 +1,9 @@
-module.exports = function(answers, tag, done) {
+'use strict';
+
+var _ = require('underscore.string');
+var createTag = require('./create-tag');
+
+module.exports = function(answers, tagObj, done) {
   if (_.isBlank(answers.tagName)) {
     chalk.error('Tag name can NOT be empty');
     done();
@@ -15,12 +20,12 @@ module.exports = function(answers, tag, done) {
 
     for (let tag of tags) {
       var answers = {tagName: tag, appName: answers.appName}
-      createTag(answers, tag, targetDir, function() {
+      createTag(answers, tagObj, targetDir, function() {
       });
     }
     done();
   } else {
-    createTag(answers, tag, targetDir, function() {
+    createTag(answers, tagObj, targetDir, function() {
       done();
     });
   }

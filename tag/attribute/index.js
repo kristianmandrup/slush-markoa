@@ -1,12 +1,16 @@
-var Attribute = function(attribute) {
-  this.attribute = attribute;
+'use strict';
+
+var Attribute = function(attribute, name) {
+  this.name = name;
+  this.type = attribute.type;
+  this.default = attribute.default;
 }
 
 Attribute.prototype = {
   preRenderStatement: function() {
     if (this.default) {
       var fullName = 'input.' + this.name;
-      return fullName + ' = ' fullName + ' || ' + this.convertedDefault();
+      return fullName + ' = ' + fullName + ' || ' + this.convertedDefault();
     }
     return undefined;
   },

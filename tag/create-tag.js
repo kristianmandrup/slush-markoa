@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp'),
     install = require('gulp-install'),
     conflict = require('gulp-conflict'),
@@ -9,15 +11,21 @@ var gulp = require('gulp'),
 
 var jsonfile = require('jsonfile')
 
-module.exports = function(answers, tag, targetDir, done) {
+module.exports = function(answers, tagObj, targetDir, done) {
   var compFileName = answers.tagName;
   var subFoldersPath = '';
   var subFolders = [];
 
   // use the Tag object!!!
-  answers.tagSchema = tag.jsonSchema();
-  answers.preRenderStatement = tag.preRenderStatements();
-  answers.jadeTemplate = tag.jadeTemplate();
+  if (tagObj) {
+    answers.tagSchema = tagObj.jsonSchema();
+    answers.preRenderStatement = tagObj.preRenderStatements();
+    answers.jadeTemplate = tagObj.jadeTemplate();
+  } else {
+    answers.tagSchema = '{}';
+    answers.jadeTemplate = 'strong ' + answers.tagName;
+    answers.preRenderStatement = '// pre-render logic here...';
+  }
 
   //sub folder
   var splits = compFileName.split(':');

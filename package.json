@@ -30,7 +30,9 @@
     "test": "mocha"
   },
   "dependencies": {
+    "async": "^1.4.2",
     "chalk-log": "^1.2.0",
+    "extend": "^3.0.0",
     "fs-extra": "^0.8.1",
     "gulp": "^3.6.2",
     "gulp-conflict": "^0.1.1",
@@ -43,6 +45,7 @@
     "jsonfile": "^2.2.1",
     "slush": ">=1.0.0",
     "spawn-command": "0.0.2",
+    "sugar": "^1.4.1",
     "underscore.string": "^2.3.3"
   },
   "keywords": [

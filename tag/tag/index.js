@@ -1,3 +1,5 @@
+'use strict';
+
 var Tag = function(attributes) {
   this.attributes = attributes;
 }
@@ -19,7 +21,7 @@ Tag.prototype = {
     return schema;
   },
   jsonSchema: function() {
-    return JSON.stringify(this.schema());
+    return JSON.stringify(this.schema(), undefined, 4);
   },
   sampleJadeTemplate: function() {
     var tag = '';
@@ -36,6 +38,5 @@ Tag.prototype = {
     return tag;
   }
 }
-
 
 module.exports = Tag;

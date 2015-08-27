@@ -3,22 +3,32 @@
 var _         = require('underscore.string'),
     inquirer  = require('inquirer'),
     path      = require('path'),
+    async     = require('async'),
     chalk     = require('chalk-log');
+
+require('sugar');
 
 var doTag = require('./do-tag');
 var createListTag = require('./list-tag/create');
 var createAttribute = require('./attribute/create');
 
-function buildAttributes(done) {
-  var attributes = [];
-  for (let name of attributeNames) {
-    createAttribute(function(attribute) {
-      attributes.push(attribute);
+function askAttribute(name, done) {
+  createAttribute(name, function(attribute) {
+    done(attribute)
+  });
+}
 
-      if (name === attributeNames[attributeNames.length -1])
-        done(attributes);
+function buildAttributes(attributeNames, done) {
+  let attributes = [];
+  async.eachSeries(attributeNames, function (name, callback) {
+    askAttribute(name, function(attribute){
+      attributes.push(attribute);
+      callback();
     });
-  }
+  }, function (err) {
+    if (err) throw err;
+    done(attributes);
+  });
 }
 
 function buildTag(answers, attributes, done) {
@@ -28,12 +38,10 @@ function buildTag(answers, attributes, done) {
     return;
   }
 
-  createListTag(function(tag) {
+  createListTag(attributes, function(tag) {
     done(tag)
   });
 }
-
-
 
 module.exports = function() {
     return function (done) {
@@ -45,13 +53,22 @@ module.exports = function() {
                 return done();
               }
 
-              buildAttributes(function(attributes) {
-                buildTag(answers, attributes, function(tag) {
-                  doTag(answers, tag, function() {
-                    done();
-                  })
-                });
-              })
+              var attributeNames = answers.attributeNames.split(',');
+              attributeNames = attributeNames.compact();
+
+              if (attributeNames.length) {
+                buildAttributes(attributeNames, function(attributes) {
+                  buildTag(answers, attributes, function(tag) {
+                    doTag(answers, tag, function() {
+                      done();
+                    })
+                  });
+                })
+              } else {
+                doTag(answers, undefined, function() {
+                  done();
+                })
+              }
             }
         );
     }
