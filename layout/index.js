@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     _ = require('underscore.string'),
     inquirer = require('inquirer'),
     path = require('path'),
-    chalk     = require('chalk-log');
+    chalk = require('chalk-log');
 
 var util = require('util');
 
@@ -37,10 +37,24 @@ module.exports = function(defaults) {
                   return pluginMap[name] || name;
                 })
 
+                let modules = [];
                 // poststylus = require('poststylus');
-                let modules = ['jade-marko', 'browser-sync', 'koa-browser-sync', 'jade', 'gulp-stylus', 'gulp-util', 'stylus', 'sugar', 'gulp-watch', 'gulp-sourcemaps', 'require-dir'];
-                if (answers.sass) {
-                  modules.push('gulp-sass');
+                let deps = ['gulp-stylus', 'stylus', 'gulp-watch', 'gulp-sourcemaps'];
+                if (answers.installDeps) {
+                  modules = deps;
+                  if (answers.sass) {
+                    modules.push('gulp-sass');
+                  }
+                } else {
+                  chalk.note('Skipped npm install:');
+                  chalk.log(deps.join(' '));
+                  if (answers.sass) {
+                    chalk.log('gulp-sass');
+                  }
+                }
+
+                if (answers.browserSync) {
+                  modules.push('koa-browser-sync');
                 }
 
                 for (let name of stylusModules)
@@ -64,8 +78,11 @@ module.exports = function(defaults) {
                 installCommand.on('exit', function (exitCode) {
                   if (exitCode !== 0) done();
 
-                  chalk.ok('Install: Semantic UI');
+                  chalk.ok('Install Semantic UI:');
                   chalk.log('npm install semantic-ui --save');
+
+                  chalk.note('Then build it:');
+                  chalk.log('cd semantic && gulp build');
 
                   gulp.src(__dirname + '/templates/**')
                       .pipe(template(answers))

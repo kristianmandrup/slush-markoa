@@ -23,7 +23,18 @@ module.exports = function(defaults) {
   }, {
       type: 'confirm',
       name: 'sass',
-      message: 'You want SASS (SCSS) support as well?'
+      message: 'You want SASS (SCSS) support as well?',
+      default: false
+  }, {
+      type: 'confirm',
+      name: 'installDeps',
+      message: 'You want to auto-install dev dependencies?',
+      default: false
+  }, {
+      type: 'confirm',
+      name: 'browserSync',
+      message: 'You want to install browser sync?',
+      default: false
   }, {
       type: 'confirm',
       name: 'moveon',
