@@ -31,7 +31,7 @@ Compile apps
 
 You can now run:
 
-`node compile-apps`
+`node compile-apps.js`
 
 This will "compile" the apps and prepare widget maps and generate appropriate `browser.json` files for use with lasso, the asset dependency manager/injector ;)
 
