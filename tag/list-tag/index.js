@@ -24,7 +24,7 @@ JadeTemplate.prototype = {
     return this.tag.tagName + "(attrs='item')";
   },
   template: function() {
-    return this.jadeContainer() + '\n  ' + this.loop() + '\n    ' + this.item();
+    return this.container() + '\n  ' + this.loop() + '\n    ' + this.item();
   }
 }
 
@@ -46,12 +46,13 @@ MarkoTemplate.prototype = {
     return '  </for>\n</div>';
   },
   template: function() {
-    return this.jadeContainer() + '\n  ' + this.loop() + '\n    ' + this.item() + this.endTags();
+    return this.container() + '\n  ' + this.loop() + '\n    ' + this.item() + this.endTags();
   }
 }
 
+ListTag.prototype = {};
 
-ListTag.prototype = {
+var ListTemplating = {
   jadeTemplate: function() {
     return new JadeTemplate(this).template();
   },
@@ -60,6 +61,6 @@ ListTag.prototype = {
   }
 }
 
-extend(ListTag.prototype, Tag.prototype);
+extend(ListTag.prototype, Tag.prototype, ListTemplating);
 
 module.exports = ListTag;

@@ -48,7 +48,8 @@ let tasks = {};
 tasks.default = require('./default')(defaults);
 gulp.task('default', tasks.default);
 
-console.log('slush-markoa v.0.4.3');
+// TODO: read from package.json!!!
+console.log('slush-markoa v.0.5.2');
 
 // 'components'
 for (let name of ['app', 'state', 'tag', 'taglib', 'roots', 'layout', 'widget']) {
