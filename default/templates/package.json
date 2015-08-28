@@ -29,7 +29,6 @@
       "marko-widgets": "marko-js/marko-widgets#master",
       "marooka": "kristianmandrup/markoa#master",
       "marko-tag-body": "kristianmandrup/marko-tag-body#or-variant",
-      "marko-dynamic-tag": "^0.0.1",
       "marko-semantic-ui-taglibs": "kristianmandrup/marko-semantic-ui-taglibs#master",
       "browser-refresh-taglib": "^1.0.3"
     },
