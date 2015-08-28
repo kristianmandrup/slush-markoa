@@ -23,19 +23,17 @@ Tag.prototype = {
   jsonSchema: function() {
     return JSON.stringify(this.schema(), undefined, 4);
   },
-  sampleJadeTemplate: function() {
-    var tag = '';
-    this.attributes.map(function(att) {
+  jadeTemplate: function() {
+    var tags = this.attributes.map(function(att) {
       return 'strong '  + att.name + ': $data.' + att.name;
     });
-    return tag;
+    return tags.join('\n');
   },
-  sampleMarkoTemplate: function() {
-    var tag = '';
-    this.attributes.map(function(att) {
+  markoTemplate: function() {
+    var tags = this.attributes.map(function(att) {
       return '<strong>'  + att.name + ': $data.' + att.name + '</strong>';
     });
-    return tag;
+    return tags.join('\n');
   }
 }
 

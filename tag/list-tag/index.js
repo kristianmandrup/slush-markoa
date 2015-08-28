@@ -9,18 +9,54 @@ var ListTag = function(props, attributes) {
   this.tagName = props.tagName;
 }
 
-ListTag.prototype = {
+var JadeTemplate = function(tag) {
+  this.tag = tag;
+}
+
+JadeTemplate.prototype = {
   container: function() {
-    return "div(class='ui " + this.name + "')";
+    return "div(class='ui " + this.tag.name + "')";
   },
   loop: function() {
-    return "for(each='item in " + this.name + "')";
+    return "for(each='item in " + this.tag.name + "')";
   },
   item: function() {
-    return this.tagName + "(attrs='item')";
+    return this.tag.tagName + "(attrs='item')";
   },
+  template: function() {
+    return this.jadeContainer() + '\n  ' + this.loop() + '\n    ' + this.item();
+  }
+}
+
+var MarkoTemplate = function(tag) {
+  this.tag = tag;
+}
+
+MarkoTemplate.prototype = {
+  container: function() {
+    return "<div class='ui " + this.tag.name + "'>";
+  },
+  loop: function() {
+    return "<for each='item in " + this.tag.name + "'>";
+  },
+  item: function() {
+    return '<' + this.tag.tagName + " attrs='item'/>";
+  },
+  endTags: function() {
+    return '  </for>\n</div>';
+  },
+  template: function() {
+    return this.jadeContainer() + '\n  ' + this.loop() + '\n    ' + this.item() + this.endTags();
+  }
+}
+
+
+ListTag.prototype = {
   jadeTemplate: function() {
-    return this.container() + '\n  ' + this.loop() + '\n    ' + this.item();
+    return new JadeTemplate(this).template();
+  },
+  markoTemplate: function() {
+    return new MarkoTemplate(this).template();
   }
 }
 
