@@ -8,7 +8,7 @@ module.exports = function(defaults) {
       default: defaults.name
   }, {
       name: 'tagName',
-      message: 'What tag should be used for each list item ?',
+      message: 'What tag should be rendered for each list item ?',
       default: defaults.tagName
   }];
   return prompts;
