@@ -12,21 +12,7 @@ module.exports = function(answers, tagObj, done) {
   var targetDir = _.isBlank(answers.appName) ? './apps/_global' : path.join('./apps', answers.appName);
 
   var createTag = require('./create-tag');
-
-  if (answers.tagName.match(/,/)) {
-    var tags = answers.tagName.split(',').map(function(tag) {
-      return _.clean(tag);
-    });
-
-    for (let tag of tags) {
-      var answers = {tagName: tag, appName: answers.appName}
-      createTag(answers, tagObj, targetDir, function() {
-      });
-    }
+  createTag(answers, tagObj, targetDir, function() {
     done();
-  } else {
-    createTag(answers, tagObj, targetDir, function() {
-      done();
-    });
-  }
+  });
 }

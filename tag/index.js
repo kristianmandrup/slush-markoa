@@ -43,11 +43,17 @@ function buildTag(answers, attributes, done) {
   });
 }
 
-module.exports = function() {
+module.exports = function(name) {
     return function (done) {
+        var defaults = {
+          name: name || ''
+        };
+
         let prompts = require('./prompts');
+
+        chalk.note("Note: tag name must have '-'. Use ':' for namespacing")
         //Ask
-        inquirer.prompt(prompts,
+        inquirer.prompt(prompts(defaults),
             function (answers) {
               if (!answers.moveon) {
                 return done();

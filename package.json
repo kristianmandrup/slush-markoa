@@ -1,7 +1,7 @@
 {
   "name": "slush-markoa",
   "description": "Markoa app generator",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "homepage": "https://github.com/kristianmandrup/slush-markoa",
   "author": {
     "name": "Kristian Mandrup",
@@ -43,6 +43,7 @@
     "iniparser": "^1.0.5",
     "inquirer": "^0.8.0",
     "jsonfile": "^2.2.1",
+    "package-info": "^2.2.2",
     "slush": ">=1.0.0",
     "spawn-command": "0.0.2",
     "sugar": "^1.4.1",

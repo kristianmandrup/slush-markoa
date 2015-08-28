@@ -8,8 +8,9 @@
 
 'use strict';
 
-var gulp = require('gulp'),
-    path = require('path');
+var gulp = require('gulp');
+var path = require('path');
+var chalk = require('chalk-log');
 
 function format(string) {
     var username = string.toLowerCase();
@@ -49,10 +50,12 @@ tasks.default = require('./default')(defaults);
 gulp.task('default', tasks.default);
 
 // TODO: read from package.json!!!
-console.log('slush-markoa v.0.5.2');
+var packInfo = require('./package.json');
+
+chalk.note('Slush markoa generator: v.' + packInfo.version);
 
 // 'components'
-for (let name of ['app', 'state', 'tag', 'taglib', 'roots', 'layout', 'widget']) {
+for (let name of ['app', 'state', 'tag', 'tags', 'taglib', 'roots', 'layout', 'widget']) {
   tasks[name] = require('./' + name)();
   gulp.task(name, tasks[name]);
 }
