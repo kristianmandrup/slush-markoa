@@ -97,8 +97,26 @@ module.exports = function(defaults) {
                       .on('end', function () {
                           done();
                       });
-                });
 
+                  if (answers.sass) {
+                    chalk.ok('npm install gulp-sass gulp-sourcemaps --save-dev');
+
+                    gulp.src(__dirname + '/sass/**')
+                        .pipe(template(answers))
+                        .pipe(rename(function (file) {
+                            if (file.basename[0] === '_') {
+                                file.basename = '.' + file.basename.slice(1);
+                            }
+                        }))
+                        .pipe(conflict('./'))
+                        .pipe(gulp.dest('./styles'))
+                        .pipe(install())
+                        .on('end', function () {
+                            done();
+                        });
+                      });
+                  });
+                }
             }
         );
     }
