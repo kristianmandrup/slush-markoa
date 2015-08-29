@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var paths = require('../paths');
 var stylus = require('gulp-stylus');
 var sourcemaps = require('gulp-sourcemaps');
+var print = require('gulp-print');
 
 // =========================================================
 // Load Stylus plugins you wish to use
@@ -34,6 +35,7 @@ var stylusOpts = {'include css': true, use: stylusPlugins};
 
 gulp.task('stylus', function () {
   gulp.src(paths.stylus)
+    .pipe(print())
     .pipe(sourcemaps.init())
     .pipe(stylus(stylusOpts))
     .pipe(sourcemaps.write('.'))

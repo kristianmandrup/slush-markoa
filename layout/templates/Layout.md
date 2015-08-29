@@ -52,7 +52,19 @@ In `layout.jade`
 
 ```jade
 link(rel="stylesheet" type="text/css" href="semantic.min.css")
-script(src="semantic/dist/semantic.min.js")
+script(src="semantic.min.js")
+```
+
+Alternatively use the `browser.json` file to tell Lasso to include these assets on the page:
+
+```json
+{
+    "dependencies": [
+        "./semantic.min.css",
+        "./semantic.min.js",
+        "require: marko-widgets"
+    ]
+}
 ```
 
 ### Add your own styling to Marko

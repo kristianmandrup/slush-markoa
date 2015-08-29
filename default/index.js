@@ -23,7 +23,7 @@ module.exports = function(defaults) {
                 if (_.isBlank(answers.appNameSlug)) done();
                 answers.appNameSlug = _.slugify(answers.appName);
 
-                answers.lassoPage = 'lasso-page(name="$data.name" package-path="./${data.name}.browser.json")';
+                answers.lassoPage = 'lasso-page(name="$data.name" package-path="./assets/${data.name}.browser.json")';
 
                 gulp.src(__dirname + '/templates/**')
                     .pipe(template(answers))
