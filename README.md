@@ -53,7 +53,7 @@ App container generated
 /apps
   /_global
     /components
-    /state
+    /data
       index.js
     /layouts
       web-layout.jade
@@ -68,7 +68,7 @@ App container generated
       index.jade
       index.marko
       index.browser.json
-    /state
+    /data
       index.js
     marko-taglib.json
   /repositories
@@ -144,7 +144,7 @@ This geneator will create an app under apps/[app-name] similar to the default `i
       template.marko
   /layouts
     _page.jade
-  /state
+  /data
     index.js
   /page
     index.jade

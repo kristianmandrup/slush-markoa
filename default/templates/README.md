@@ -76,7 +76,7 @@ mount(apps);
 /apps
   /_global
     /components
-    /state
+    /data
       index.js
     /layouts
       _default_page.jade
@@ -86,7 +86,7 @@ mount(apps);
         template.marko
     /layouts
       _page.jade
-    /state
+    /data
       index.js
     /page
       index.jade
@@ -112,7 +112,7 @@ This geneator will create an app under apps/[app-name] similar to the default `i
       template.marko
   /layouts
     _page.jade
-  /state
+  /data
     index.js
   /page
     index.jade
