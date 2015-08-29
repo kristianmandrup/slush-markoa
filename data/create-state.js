@@ -13,6 +13,8 @@ module.exports = function(answers) {
   var templateDir = answers.where === '' ? 'global' : answers.appName;
   var targetDir = answers.where === '' ? '_global' : answers.appName;
 
+  var appDataDir = path.join('./apps/', targetDir, 'data');
+
   gulp.src(__dirname + '/templates/' + templateDir)
       .pipe(template(answers))
       .pipe(rename(function (file) {
@@ -21,7 +23,7 @@ module.exports = function(answers) {
           }
       }))
       .pipe(conflict('./'))
-      .pipe(gulp.dest('./apps/' + targetDir + '/state'))
+      .pipe(gulp.dest(appDataDir))
       .pipe(install())
       .on('end', function () {
           done();

@@ -55,7 +55,7 @@ var packInfo = require('./package.json');
 chalk.note('Slush markoa generator: v.' + packInfo.version);
 
 // 'components'
-for (let name of ['app', 'state', 'tag', 'tags', 'taglib', 'roots', 'layout', 'widget']) {
+for (let name of ['app', 'data', 'tag', 'tags', 'taglib', 'roots', 'layout', 'widget']) {
   tasks[name] = require('./' + name)();
   gulp.task(name, tasks[name]);
 }

@@ -7,4 +7,4 @@ It is the `.js` file which renders the HTML on the server and sends the stream o
 
 ### Page asset dependencies
 
-Page asset dependencies can be managed by [Lasso](https://github.com/lasso-js/lasso) via the JSON config files in `page/assets`.
+Page asset dependencies can be managed by [Lasso](https://github.com/lasso-js/lasso) via the JSON config files in `page/dependencies`.

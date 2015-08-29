@@ -57,9 +57,6 @@ module.exports = function() {
                         if (file.basename.match(/^app/)) {
                             file.basename = file.basename.replace(/^app/, answers.appName);
                         }
-                        if (file.basename.match(/app-layout/)) {
-                            file.basename = file.basename.replace(/^app-/, answers.appName);
-                        }
                     }))
                     .pipe(conflict('./'))
                     .pipe(gulp.dest('./apps/' + answers.appNameSlug))

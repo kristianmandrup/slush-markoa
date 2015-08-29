@@ -8,12 +8,15 @@ Generators included
 
 -	`slush markoa` (basic project with markoa apps)
 -	`slush markoa:app` (add app to apps)
+-	`slush markoa:data` (add app to apps)
 -	`slush markoa:layout` (Stylus and Jade->Marko configuration)
 -	`slush markoa:roots` (roots.cx configuration)
 -	`slush markoa:tag` (add one marko tag)
--	`slush markoa:tags` (add multiple marko tags)
 -	`slush markoa:taglibs` (add one or more marko taglibs)
+-	`slush markoa:tags` (add multiple marko tags)
 -	`slush markoa:widget` (add one or more marko widgets)
+
+TODO: Improve `widget` generator similar to make more similar to `tag` generator ;)
 
 Getting Started
 ---------------
