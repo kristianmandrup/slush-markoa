@@ -33,6 +33,21 @@ var jeet = require('jeet');
 var stylusPlugins = [jeet()];
 var stylusOpts = {'include css': true, use: stylusPlugins};
 
+var stylusAppPaths = [];
+try {
+  var apps = require('./apps')
+  for (let app of apps.list) {
+    stylusAppPaths.push(path.join(apps.rootPath, app, 'assets')
+  }
+} catch (e) {
+  console.warn('WARNING: You should compile your apps via:\n$ npm run compile')
+}
+
+// add stylus paths global assets
+paths.stylus.concat(['apps/_global/assets']);
+// add stylus paths for each app assets
+paths.stylus.concat(stylusAppPaths);
+
 gulp.task('stylus', function () {
   gulp.src(paths.stylus)
     .pipe(print())

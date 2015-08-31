@@ -21,7 +21,8 @@
         "npm": ">=1.4.3"
     },
     "scripts": {
-        "test": "mocha"
+        "test": "mocha",
+        "compile": "node compile-apps.js",
     },
     "dependencies": {
       "lasso": "^1.10.2",
@@ -45,7 +46,7 @@
       "gulp-minify-css": "^1.2.0",
       "gulp-autoprefixer": "^2.3.0",
       "gulp-rename": "^1.2.2",
-      "gulp-print": "^1.1.0",      
+      "gulp-print": "^1.1.0",
       "gulp": "^3.8.7",
       "gulp-util": "^3.0.6",
       "require-dir": "^0.3.0",

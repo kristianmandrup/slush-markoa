@@ -65,12 +65,14 @@ App container generated
       /project-feed
         template.marko
     /layouts
+      index-layout.jade
       mobile-layout.jade
     /page
-      layout.jade
+      /dependencies
+        browser.json
+        index.browser.json
       index.jade
       index.marko
-      index.browser.json
     /data
       index.js
     marko-taglib.json
@@ -108,9 +110,9 @@ Which should auto reload the browser whenever a `.marko` page is changes, for in
 
 There is also a `browser-refresh.json` file for configuring this in more details, including for SSL support.
 
-### Distribution
+### Static asset dependencies
 
-Static assets are compiled to `/dist` and can be referenced from marko directly.
+Static assets in `public` are compiled to `/dist` and can be referenced from marko directly.
 
 So this is valid:
 
@@ -127,6 +129,8 @@ link(rel="stylesheet" type="text/css" href="app.css")
 link(rel="stylesheet" type="text/css" href="semantic.min.css")
 script(src="semantic.min.js")
 ```
+
+However we recommend using proper page dependencies via Lasso and `browser.json` files (see below)
 
 ### Layout
 

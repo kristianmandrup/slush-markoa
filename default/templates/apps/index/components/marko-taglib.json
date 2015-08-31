@@ -1,3 +1,6 @@
 {
-    "tags-dir": "."
+  "taglib-imports": [
+    "./tags/marko-taglib.json",
+    "./widgets/marko-taglib.json"
+  ]
 }
