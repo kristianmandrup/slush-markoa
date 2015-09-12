@@ -1,3 +1,6 @@
+/*jslint node: true */
+'use strict';
+
 /*
  * slush-markoa
  * https://github.com/kristianmandrup/slush-markoa
@@ -6,7 +9,6 @@
  * Licensed under the MIT license.
  */
 
-'use strict';
 var gulp = require('gulp'),
     install = require('gulp-install'),
     conflict = require('gulp-conflict'),
@@ -14,19 +16,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     _ = require('underscore.string'),
     inquirer = require('inquirer'),
-    path = require('path'),
-    chalk = require('chalk-log'),
-    fs = require('fs-extra');
-
-// move
-function moveFile(src, dest) {
-  fs.copySync(src, dest, function (err) {
-    if (err) return console.error(err)
-    fs.remove(src, function (err) {
-      if (err) return console.error(err)
-    });
-  });
-}
+    chalk = require('chalk-log');
 
 module.exports = function() {
     return function (done) {
@@ -39,7 +29,7 @@ module.exports = function() {
             message: 'Continue?'
         }];
 
-        chalk.ok('Compile your new app by running:')
+        chalk.ok('Compile your new app by running:');
         chalk.log('gulp jade:marko');
 
         //Ask
@@ -48,7 +38,9 @@ module.exports = function() {
                 if (!answers.moveon) {
                     return done();
                 }
-                if (_.isBlank(answers.appNameSlug)) done();
+                if (_.isBlank(answers.appNameSlug)) {
+                  done();
+                }
                 answers.appNameSlug = _.slugify(answers.appName);
 
                 gulp.src(__dirname + '/templates/**')
@@ -62,9 +54,9 @@ module.exports = function() {
                     .pipe(gulp.dest('./apps/' + answers.appNameSlug))
                     .pipe(install())
                     .on('end', function () {
-                      done()
+                      done();
                     });
             }
         );
-    }
-}
+    };
+};

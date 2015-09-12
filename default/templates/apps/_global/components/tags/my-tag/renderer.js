@@ -1,3 +1,6 @@
+/*jslint node: true */
+'use strict';
+
 var template = require('./template.marko');
 
 exports.renderer = function(input, out) {

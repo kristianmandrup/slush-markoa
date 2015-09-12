@@ -59,23 +59,27 @@ App container generated
     /data
       index.js
     /layouts
-      web-layout.jade
+      layout.jade
+      mobile.jade
   /index
     /components
-      /project-feed
-        template.marko
+      /tags
+        /project-feed
+          marko-tag.json
+          app.jade
+      marko-taglib.json
     /layouts
-      index-layout.jade
-      mobile-layout.jade
+      base.jade
+      mobile.jade
     /page
       /dependencies
         browser.json
-        index.browser.json
-      index.jade
-      index.marko
+        app.browser.json
+      app.jade
     /data
       index.js
     marko-taglib.json
+    meta.js
   /repositories
   /teams
   ...
@@ -114,8 +118,6 @@ There is also a `browser-refresh.json` file for configuring this in more details
 
 Static assets in `public` are compiled to `/dist` and can be referenced from marko directly.
 
-So this is valid:
-
 ```html
 <link rel="stylesheet" type="text/css" href="app.css">
 <link rel="stylesheet" type="text/css" href="semantic.min.css">
@@ -130,7 +132,7 @@ link(rel="stylesheet" type="text/css" href="semantic.min.css")
 script(src="semantic.min.js")
 ```
 
-However we recommend using proper page dependencies via Lasso and `browser.json` files (see below)
+However we recommend using proper page dependencies via [Lasso](https://github.com/lasso-js/lasso) and `browser.json` files (see below)
 
 ### Layout
 
@@ -147,16 +149,23 @@ This geneator will create an app under apps/[app-name] similar to the default `i
 ```
 /[app]
   /components
-    /project-feed
-      template.marko
+    /tags
+      /project-feed
+        marko-tag.json
+        template.jade
+    marko-taglib.json
+
   /layouts
-    _page.jade
+    base.jade
+
   /data
     index.js
+
   /page
-    index.jade
-    index.marko
-    index.browser.json
+    app.jade
+    /dependencies
+      app.browser.json
+
   marko-taglib.json
 ```
 
@@ -172,13 +181,13 @@ Use this generator each time you want to add a tag! If no app name is given, the
 /apps
   /_global
     /components
-      /[tag]
-        marko-tag.json
-        renderer.js
-        template.marko
-        template.jade
+      /tags
+        /[tag]
+          marko-tag.json
+          renderer.js
+          template.jade
 
-  marko-taglib.json
+    marko-taglib.json
 ```
 
 If an app name is given: `apps/[app-name]/components`
@@ -187,18 +196,18 @@ If an app name is given: `apps/[app-name]/components`
 /apps
   /[app]
     /components
-      /[tag]
-        marko-tag.json
-        renderer.js
-        template.marko
-        template.jade
+      /tags
+        /[tag]
+          marko-tag.json
+          renderer.js
+          template.jade
 ```
 
 #### Tags and Taglibs
 
 As you get more fine grained tags, it starts to make sense to group them into categories such as:
 
--	button Tags
+-	button tags
 -	list tags
 -	list item tags
 -	...
@@ -211,13 +220,15 @@ This will create a subfolder `xxx` for the tag. F.ex for the tag `menu:top`
 /apps
   /_global
     /components
-      /menu
-        /menu-top
-          marko-tag.json
-          renderer.js
-          template.marko
-          template.jade
+      /tags
+        /menu
+          /menu-top
+            marko-tag.json
+            renderer.js
+            template.marko
+            template.jade
 
+    marko-taglib.json
   marko-taglib.json
 ```
 
@@ -349,7 +360,7 @@ Read more about how to get the full benefits of reactive Widgets for client and 
 ### Full page setup
 
 ```html
-<lasso-page name="index" package-path="./browser.json" />
+<lasso-page name="index" package-path="./dependencies/app-browser.json" />
 
 <!doctype html>
 <html lang="en">
