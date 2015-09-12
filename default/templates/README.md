@@ -76,17 +76,21 @@ mount(apps);
 /apps
   /_global
     /components
+      ...
     /data
       index.js
     /layouts
       _default_page.jade
   /index
     /components
-      /project-feed
-        template.marko
+      /tags
+        /project-feed
+          template.jade
+    marko-taglib.json          
     /layouts
       _page.jade
     /data
+      global.js
       index.js
     /page
       index.jade
@@ -111,13 +115,16 @@ This geneator will create an app under apps/[app-name] similar to the default `i
     /project-feed
       template.marko
   /layouts
-    _page.jade
+    base.jade
   /data
+    global.js
     index.js
-  /page
-    index.jade
-    index.marko
-    index.browser.json
+  /page  
+    meta.js
+    app.jade
+    app.marko
+    /dependencies
+      app.browser.json
   marko-taglib.json
 ```
 
