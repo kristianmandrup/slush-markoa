@@ -1,8 +1,7 @@
+/*jslint node: true */
 'use strict';
 
-var _         = require('underscore.string'),
-    inquirer  = require('inquirer'),
-    path      = require('path'),
+var inquirer  = require('inquirer'),
     async     = require('async'),
     chalk     = require('chalk-log');
 
@@ -14,7 +13,7 @@ var createAttribute = require('./attribute/create');
 
 function askAttribute(name, done) {
   createAttribute(name, function(attribute) {
-    done(attribute)
+    done(attribute);
   });
 }
 
@@ -26,7 +25,9 @@ function buildAttributes(attributeNames, done) {
       callback();
     });
   }, function (err) {
-    if (err) throw err;
+    if (err) {
+      throw err;
+    }
     done(attributes);
   });
 }
@@ -39,7 +40,7 @@ function buildTag(answers, attributes, done) {
   }
 
   createListTag(attributes, function(tag) {
-    done(tag)
+    done(tag);
   });
 }
 
@@ -50,8 +51,7 @@ module.exports = function(name) {
         };
 
         let prompts = require('./prompts');
-
-        chalk.note("Note: tag name must have '-'. Use ':' for namespacing")
+        chalk.note('Note: tag name must have `-`. Use `:` for namespacing');
         //Ask
         inquirer.prompt(prompts(defaults),
             function (answers) {
@@ -67,15 +67,15 @@ module.exports = function(name) {
                   buildTag(answers, attributes, function(tag) {
                     doTag(answers, tag, function() {
                       done();
-                    })
+                    });
                   });
-                })
+                });
               } else {
                 doTag(answers, undefined, function() {
                   done();
-                })
+                });
               }
             }
         );
-    }
-}
+    };
+};

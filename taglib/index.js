@@ -1,3 +1,4 @@
+/*jslint node: true */
 'use strict';
 
 var _         = require('underscore.string'),
@@ -29,16 +30,17 @@ module.exports = function() {
                   done();
                 }
                 answers.taglibName = _.clean(answers.taglibName);
-                var targetDir = _.isBlank(answers.appName) ? './apps/_global' : path.join('./apps', answers.appName);
+                var appPath = path.join('./apps', answers.appName);
+                var targetDir = _.isBlank(answers.appName) ? './apps/_global' : appPath;
 
                 var createTagLib = require('./create-taglib');
 
                 if (answers.taglibName.match(/,/)) {
                   var taglibs = answers.taglibName.split(',').map(function(taglib) {
                       return _.clean(taglib);
-                  })
-                  for (let taglib of taglib) {
-                    var answers = {taglibName: taglib, appName: answers.appName}
+                  });
+                  for (let taglib of taglibs) {
+                    answers = {taglibName: taglib, appName: answers.appName};
                     createTagLib(answers, targetDir);
                   }
                 } else {
@@ -46,5 +48,5 @@ module.exports = function() {
                 }
             }
         );
-    }
-}
+    };
+};
