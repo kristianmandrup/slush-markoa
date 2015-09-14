@@ -2,8 +2,14 @@
 'use strict';
 
 module.exports = {
+  // nested apps
+  // apps: require('./apps'),
+
   data: require('./data'),
-  apps: require('./apps'),
+  meta: require('./meta'),
+  methods: require('./methods'),
+  routes: require('./routes'),
+
   compile: require('./compile'),
   components: require('./components/components-map')
 };
