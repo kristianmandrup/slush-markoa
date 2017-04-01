@@ -1,6 +1,8 @@
 Slush Markoa [![Build Status](https://secure.travis-ci.org/kristianmandrup/slush-markoa.png?branch=master)](https://travis-ci.org/kristianmandrup/slush-markoa) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-markoa.png)](http://badges.enytc.com/for/npm/slush-markoa)
 =======================================================================================================================================================================================================================================================================================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kristianmandrup/slush-markoa.svg)](https://greenkeeper.io/)
+
 > Markoa app generator
 
 Generators included
